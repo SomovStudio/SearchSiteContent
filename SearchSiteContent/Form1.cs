@@ -144,11 +144,12 @@ namespace SearchSiteContent
                 for(int i = 0; i < sitemaps.Count; i++)
                 {
                     page = getPageHtmlDOM(sitemaps[i].ToString());
+                    if (checkThisIsSitemap(page) == false) continue;
                     addConsoleMessage("Чтение данных из сайтмап: " + sitemaps[i].ToString());
                     ArrayList listSitemaps = readSitemap(page);
                     foreach (string urlSitemap in listSitemaps)
                     {
-                        if (urlSitemap.Contains("sitemap") == true)
+                        if (urlSitemap.Contains(".xml") == true)
                         {
                             sitemaps.Add(urlSitemap);
                             //addConsoleMessage("Чтение данных из сайтмап: " + urlSitemap);
@@ -171,7 +172,7 @@ namespace SearchSiteContent
                     index++;
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
-                    toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+                    if(onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
                     try
                     {
                         string pagetarget = getPageHtmlDOM(target);
