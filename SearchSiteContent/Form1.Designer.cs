@@ -35,6 +35,7 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьSitemapФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьЛогКонсолиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьРезультатПоискаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -72,7 +73,6 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.открытьSitemapФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -140,6 +140,14 @@
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // открытьSitemapФайлToolStripMenuItem
+            // 
+            this.открытьSitemapФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьSitemapФайлToolStripMenuItem.Image")));
+            this.открытьSitemapФайлToolStripMenuItem.Name = "открытьSitemapФайлToolStripMenuItem";
+            this.открытьSitemapФайлToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.открытьSitemapФайлToolStripMenuItem.Text = "Открыть sitemap файл";
+            this.открытьSitemapФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьSitemapФайлToolStripMenuItem_Click);
+            // 
             // сохранитьЛогКонсолиToolStripMenuItem
             // 
             this.сохранитьЛогКонсолиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьЛогКонсолиToolStripMenuItem.Image")));
@@ -167,6 +175,7 @@
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
             this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
             // действияToolStripMenuItem
             // 
@@ -325,7 +334,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.BackColor = System.Drawing.Color.SteelBlue;
+            this.label7.BackColor = System.Drawing.Color.SlateBlue;
             this.label7.Location = new System.Drawing.Point(3, 19);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(878, 2);
@@ -334,7 +343,7 @@
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.Color.SteelBlue;
+            this.label8.BackColor = System.Drawing.Color.SlateBlue;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -388,6 +397,7 @@
             // 
             this.toolStripComboBox3.Name = "toolStripComboBox3";
             this.toolStripComboBox3.Size = new System.Drawing.Size(250, 25);
+            this.toolStripComboBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripComboBox3_KeyPress);
             // 
             // toolStripButton4
             // 
@@ -397,6 +407,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "Поиск в списке результатов";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripSeparator3
             // 
@@ -479,14 +490,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
-            // 
-            // открытьSitemapФайлToolStripMenuItem
-            // 
-            this.открытьSitemapФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьSitemapФайлToolStripMenuItem.Image")));
-            this.открытьSitemapФайлToolStripMenuItem.Name = "открытьSitemapФайлToolStripMenuItem";
-            this.открытьSitemapФайлToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.открытьSitemapФайлToolStripMenuItem.Text = "Открыть sitemap файл";
-            this.открытьSitemapФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьSitemapФайлToolStripMenuItem_Click);
             // 
             // Form1
             // 

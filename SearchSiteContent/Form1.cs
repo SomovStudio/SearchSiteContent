@@ -79,11 +79,21 @@ namespace SearchSiteContent
             resultRichTextBox.Text = resultRichTextBox.Text + message + Environment.NewLine;
         }
 
+        private void addValueInComboBox(ToolStripComboBox _cbox)
+        {
+            bool resolution = true;
+            for (int k = 0; k < _cbox.Items.Count; k++)
+                if (_cbox.Items[k].ToString() == _cbox.Text) resolution = false;
+            if (resolution) _cbox.Items.Add(_cbox.Text);
+        }
+
         private void start()
         {
             consoleRichTextBox.Clear();
             resultRichTextBox.Clear();
             toolStripStatusLabel3.Text = "...";
+            addValueInComboBox(toolStripComboBox1);
+            addValueInComboBox(toolStripComboBox2);
             sitemapPath = toolStripComboBox1.Text;
             searchValue = toolStripComboBox2.Text;
             addConsoleMessage("Поиск запущен");
@@ -227,6 +237,55 @@ namespace SearchSiteContent
             }
         }
 
+        /* Поиск по тексту */
+        int _findIndex = 0;
+        int _findLast = 0;
+        String _findText = "";
+        private void findText(ToolStripComboBox _cbox)
+        {
+            try
+            {
+                bool resolution = true;
+                for (int k = 0; k < _cbox.Items.Count; k++)
+                    if (_cbox.Items[k].ToString() == _cbox.Text) resolution = false;
+                if (resolution) _cbox.Items.Add(_cbox.Text);
+                if (_findText != _cbox.Text)
+                {
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+                if (resultRichTextBox.Find(_cbox.Text, _findIndex, resultRichTextBox.TextLength - 1, RichTextBoxFinds.None) >= 0)
+                {
+                    resultRichTextBox.Select();
+                    _findIndex = resultRichTextBox.SelectionStart + resultRichTextBox.SelectionLength;
+                    if (_findLast == resultRichTextBox.SelectionStart)
+                    {
+                        addConsoleMessage("Поиск в списке результатов - завершен");
+                        _findIndex = 0;
+                        _findLast = 0;
+                        _findText = _cbox.Text;
+                    }
+                    else
+                    {
+                        _findLast = resultRichTextBox.SelectionStart;
+                    }
+                }
+                else
+                {
+                    addConsoleMessage("Поиск в списке результатов - завершен");
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                addConsoleMessage("Сообщение: " + ex.Message);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             thread = new Thread(runSearch);
@@ -319,6 +378,38 @@ namespace SearchSiteContent
         private void сохранитьРезультатПоискаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFile(true);
+        }
+
+        private void toolStripComboBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar.GetHashCode().ToString() == "851981")
+                {
+                    findText(toolStripComboBox3);
+                }
+            }
+            catch (Exception ex)
+            {
+                addConsoleMessage("Сообщение: " + ex.Message);
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                findText(toolStripComboBox3);
+            }
+            catch (Exception ex)
+            {
+                addConsoleMessage("Сообщение: " + ex.Message);
+            }
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
