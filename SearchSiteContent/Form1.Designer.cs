@@ -71,6 +71,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.открытьSitemapФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -129,6 +131,7 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьSitemapФайлToolStripMenuItem,
             this.сохранитьЛогКонсолиToolStripMenuItem,
             this.сохранитьРезультатПоискаToolStripMenuItem,
             this.toolStripSeparator4,
@@ -143,6 +146,7 @@
             this.сохранитьЛогКонсолиToolStripMenuItem.Name = "сохранитьЛогКонсолиToolStripMenuItem";
             this.сохранитьЛогКонсолиToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.сохранитьЛогКонсолиToolStripMenuItem.Text = "Сохранить лог консоли";
+            this.сохранитьЛогКонсолиToolStripMenuItem.Click += new System.EventHandler(this.сохранитьЛогКонсолиToolStripMenuItem_Click);
             // 
             // сохранитьРезультатПоискаToolStripMenuItem
             // 
@@ -150,6 +154,7 @@
             this.сохранитьРезультатПоискаToolStripMenuItem.Name = "сохранитьРезультатПоискаToolStripMenuItem";
             this.сохранитьРезультатПоискаToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.сохранитьРезультатПоискаToolStripMenuItem.Text = "Сохранить результат поиска";
+            this.сохранитьРезультатПоискаToolStripMenuItem.Click += new System.EventHandler(this.сохранитьРезультатПоискаToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -200,7 +205,7 @@
             // 
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -364,6 +369,7 @@
             this.resultRichTextBox.Size = new System.Drawing.Size(876, 235);
             this.resultRichTextBox.TabIndex = 2;
             this.resultRichTextBox.Text = "";
+            this.resultRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.resultRichTextBox_LinkClicked);
             // 
             // toolStrip2
             // 
@@ -405,6 +411,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton5.Text = "Сохранить результат";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // panel1
             // 
@@ -463,10 +470,23 @@
             this.consoleRichTextBox.Size = new System.Drawing.Size(876, 177);
             this.consoleRichTextBox.TabIndex = 0;
             this.consoleRichTextBox.Text = "";
+            this.consoleRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.consoleRichTextBox_LinkClicked);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "*.xml|*.xml";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "*.txt|*.txt";
+            // 
+            // открытьSitemapФайлToolStripMenuItem
+            // 
+            this.открытьSitemapФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьSitemapФайлToolStripMenuItem.Image")));
+            this.открытьSitemapФайлToolStripMenuItem.Name = "открытьSitemapФайлToolStripMenuItem";
+            this.открытьSitemapФайлToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.открытьSitemapФайлToolStripMenuItem.Text = "Открыть sitemap файл";
+            this.открытьSitemapФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьSitemapФайлToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -548,6 +568,8 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьЛогКонсолиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьРезультатПоискаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem открытьSitemapФайлToolStripMenuItem;
     }
 }
 

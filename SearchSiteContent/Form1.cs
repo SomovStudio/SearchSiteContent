@@ -81,12 +81,12 @@ namespace SearchSiteContent
 
         private void start()
         {
-            addConsoleMessage("Поиск запущен");
             consoleRichTextBox.Clear();
             resultRichTextBox.Clear();
             toolStripStatusLabel3.Text = "...";
             sitemapPath = toolStripComboBox1.Text;
             searchValue = toolStripComboBox2.Text;
+            addConsoleMessage("Поиск запущен");
             thread = new Thread(runSearch);
             thread.Start();
         }
@@ -194,6 +194,38 @@ namespace SearchSiteContent
             }
         }
 
+        private void openSitemapFile()
+        {
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                toolStripComboBox1.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void saveFile(bool resule = false, bool console = false)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (resule == true && console == false)
+                    {
+                        resultRichTextBox.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    }
+                    if (console == true && resule == false)
+                    {
+                        consoleRichTextBox.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -215,10 +247,7 @@ namespace SearchSiteContent
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                toolStripComboBox1.Text = openFileDialog1.FileName;
-            }
+            openSitemapFile();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -246,6 +275,50 @@ namespace SearchSiteContent
         {
             About about = new About();
             about.ShowDialog();
+        }
+
+        private void resultRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(e.LinkText);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void consoleRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(e.LinkText);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            saveFile(true);
+        }
+
+        private void открытьSitemapФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openSitemapFile();
+        }
+
+        private void сохранитьЛогКонсолиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFile(false, true);
+        }
+
+        private void сохранитьРезультатПоискаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFile(true);
         }
     }
 }
