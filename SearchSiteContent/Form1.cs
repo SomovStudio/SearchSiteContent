@@ -164,7 +164,9 @@ namespace SearchSiteContent
                 /* Выполняю поиск по всем собранным url */
                 int index = 0;
                 int totalPages = targets.Count;
-                int onePercent = (totalPages / 100);
+                int onePercent = 0;
+                if (totalPages < 100) onePercent = (100 / totalPages);
+                else onePercent = (totalPages / 100);
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
                 toolStripProgressBar1.Maximum = totalPages;
                 foreach (string target in targets)
@@ -172,7 +174,10 @@ namespace SearchSiteContent
                     index++;
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
-                    if(onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+
+                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
+                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+
                     try
                     {
                         string pagetarget = getPageHtmlDOM(target);
@@ -188,7 +193,7 @@ namespace SearchSiteContent
                         addConsoleMessage("Поиск значение в " + target + " - " + ex.Message);
                     }
                 }
-
+                toolStripStatusLabel4.Text = "100%";
             }
             catch (Exception error)
             {
