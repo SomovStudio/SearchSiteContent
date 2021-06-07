@@ -132,28 +132,31 @@ namespace SearchSiteContent
                 string page = getPageHtmlDOM(sitemapPath);
                 if (checkThisIsSitemap(page) == true)
                 {
-                    ArrayList firstSitemap = readSitemap(page);
-                    foreach (string urlFirstSitemap in firstSitemap)
-                    {
-                        if (urlFirstSitemap.Contains("sitemap") == true) sitemaps.Add(urlFirstSitemap);
-                        else targets.Add(urlFirstSitemap);
-                    }
+                    sitemaps.Add(sitemapPath);
                 }
                 else
                 {
-                    sitemaps.Add(sitemapPath);
+                    MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
+                    addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
+                    return;
                 }
-
-
-                /* собираю все url из собранных sitemap */
-                foreach (string sitemap in sitemaps)
+                    
+                for(int i = 0; i < sitemaps.Count; i++)
                 {
-                    string pageSitemap = getPageHtmlDOM(sitemap);
-                    ArrayList listURLs = readSitemap(pageSitemap);
-
-                    foreach (string url in listURLs)
+                    page = getPageHtmlDOM(sitemaps[i].ToString());
+                    addConsoleMessage("Чтение данных из сайтмап: " + sitemaps[i].ToString());
+                    ArrayList listSitemaps = readSitemap(page);
+                    foreach (string urlSitemap in listSitemaps)
                     {
-                        targets.Add(url);
+                        if (urlSitemap.Contains("sitemap") == true)
+                        {
+                            sitemaps.Add(urlSitemap);
+                            //addConsoleMessage("Чтение данных из сайтмап: " + urlSitemap);
+                        }
+                        else
+                        {
+                            targets.Add(urlSitemap);
+                        }
                     }
                 }
 
@@ -184,6 +187,7 @@ namespace SearchSiteContent
                         addConsoleMessage("Поиск значение в " + target + " - " + ex.Message);
                     }
                 }
+
             }
             catch (Exception error)
             {
