@@ -69,35 +69,21 @@ namespace SearchSiteContent
             return page.Contains(value);
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void addConsoleMessage(string message)
         {
-            thread = new Thread(runSearch);
+            consoleRichTextBox.Text = message + Environment.NewLine + consoleRichTextBox.Text;
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void addResultMessage(string message)
         {
-            try
-            {
-                thread.Abort();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
+            resultRichTextBox.Text = resultRichTextBox.Text + message + Environment.NewLine;
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void start()
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                toolStripComboBox1.Text = openFileDialog1.FileName;
-            }
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
+            addConsoleMessage("Поиск запущен");
             consoleRichTextBox.Clear();
+            resultRichTextBox.Clear();
             toolStripStatusLabel3.Text = "...";
             sitemapPath = toolStripComboBox1.Text;
             searchValue = toolStripComboBox2.Text;
@@ -105,6 +91,20 @@ namespace SearchSiteContent
             thread.Start();
         }
 
+        private void stop()
+        {
+            addConsoleMessage("Поиск прерван пользователем");
+            endSearch();
+            try
+            {
+                thread.Abort();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
+            }
+        }
 
         private void runSearch()
         {
@@ -151,26 +151,27 @@ namespace SearchSiteContent
                 foreach (string target in targets)
                 {
                     index++;
-                    toolStripStatusLabel3.Text = "Процесс: "+ index.ToString() +"/" + totalPages;
+                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages;
                     try
                     {
                         string pagetarget = getPageHtmlDOM(target);
                         if (searchContentOnPage(pagetarget, searchValue) == true)
                         {
-                            consoleRichTextBox.Text = "Поиск значение в " + target + " - значение найдено" + Environment.NewLine + consoleRichTextBox.Text;
-                            richTextBox1.Text = richTextBox1.Text + target + " - значение найдено" + Environment.NewLine;
+                            addConsoleMessage("Поиск значение в " + target + " - значение найдено");
+                            addResultMessage("Страница: " + target + " - значение найдено");
                         }
-                        else consoleRichTextBox.Text = "Поиск значение в " + target + " - значение не найдено" + Environment.NewLine + consoleRichTextBox.Text;
+                        else addConsoleMessage("Поиск значение в " + target + " - значение не найдено");
                     }
                     catch (Exception ex)
                     {
-                        consoleRichTextBox.Text = "Поиск значение в " + target + " - " + ex.Message + Environment.NewLine + consoleRichTextBox.Text;
+                        addConsoleMessage("Поиск значение в " + target + " - " + ex.Message);
                     }
                 }
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
                 //MessageBox.Show(error.ToString());
             }
             finally
@@ -185,12 +186,22 @@ namespace SearchSiteContent
 
         private void endSearch()
         {
-            MessageBox.Show("Поиск - завершен!");
+            MessageBox.Show("Поиск завершен!");
+            addConsoleMessage("Поиск завершен");
+            if (resultRichTextBox.Text == "")
+            {
+                addResultMessage("На страницах заданное значение для поиска - не найдено.");
+            }
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            endSearch();
+            thread = new Thread(runSearch);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
             try
             {
                 thread.Abort();
@@ -198,9 +209,37 @@ namespace SearchSiteContent
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
             }
         }
 
-        
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                toolStripComboBox1.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            start();
+        }
+               
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            stop();
+        }
+
+        private void запуститьПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            start();
+        }
+
+        private void остановитьПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stop();
+        }
     }
 }
