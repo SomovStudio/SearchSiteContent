@@ -91,7 +91,10 @@ namespace SearchSiteContent
         {
             consoleRichTextBox.Clear();
             resultRichTextBox.Clear();
+            toolStripProgressBar1.Maximum = 0;
+            toolStripProgressBar1.Value = 0;
             toolStripStatusLabel3.Text = "...";
+            toolStripStatusLabel4.Text = "0%";
             addValueInComboBox(toolStripComboBox1);
             addValueInComboBox(toolStripComboBox2);
             sitemapPath = toolStripComboBox1.Text;
@@ -156,12 +159,16 @@ namespace SearchSiteContent
 
                 /* Выполняю поиск по всем собранным url */
                 int index = 0;
-                string totalPages = targets.Count.ToString();
+                int totalPages = targets.Count;
+                int onePercent = (totalPages / 100);
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
+                toolStripProgressBar1.Maximum = totalPages;
                 foreach (string target in targets)
                 {
                     index++;
-                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages;
+                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
+                    toolStripProgressBar1.Value = index;
+                    toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
                     try
                     {
                         string pagetarget = getPageHtmlDOM(target);
