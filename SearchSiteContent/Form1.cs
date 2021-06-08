@@ -11,12 +11,9 @@ using System.IO;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
-/* Регулярные выражения в C#
- * https://professorweb.ru/my/csharp/charp_theory/level4/4_10.php
- * Делегаты, события и лямбды Делегаты
- * https://metanit.com/sharp/tutorial/3.13.php
- */
 
 namespace SearchSiteContent
 {
@@ -427,6 +424,25 @@ namespace SearchSiteContent
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void запуститьПоискЧерезSeleniumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // https://testguild.com/selenium-webdriver-visual-studio/
+            IWebDriver driver = new ChromeDriver(@"C:\GIT\SearchSiteContent\SearchSiteContent\bin\Debug\");
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://www.google.com/");
+
+            IWebElement search = driver.FindElement(By.Name("q"));
+            search.SendKeys("GeForce 1650");
+            search.SendKeys(OpenQA.Selenium.Keys.Enter);
+
+            IList<IWebElement> elements = driver.FindElements(By.ClassName("g"));
+            if (elements.Count == 0) MessageBox.Show("FAILED");
+            else MessageBox.Show("PASSED");
+
+            driver.Close();
+            driver.Quit();
         }
     }
 }

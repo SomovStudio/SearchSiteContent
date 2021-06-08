@@ -33,6 +33,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьSitemapФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +75,8 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -119,6 +121,17 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(16, 17);
             this.toolStripStatusLabel3.Text = "...";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(250, 16);
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(23, 17);
+            this.toolStripStatusLabel4.Text = "0%";
             // 
             // menuStrip1
             // 
@@ -185,7 +198,9 @@
             // 
             this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.запуститьПоискToolStripMenuItem,
-            this.остановитьПоискToolStripMenuItem});
+            this.остановитьПоискToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.действияToolStripMenuItem.Text = "Действия";
@@ -194,7 +209,7 @@
             // 
             this.запуститьПоискToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("запуститьПоискToolStripMenuItem.Image")));
             this.запуститьПоискToolStripMenuItem.Name = "запуститьПоискToolStripMenuItem";
-            this.запуститьПоискToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.запуститьПоискToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.запуститьПоискToolStripMenuItem.Text = "Запустить поиск";
             this.запуститьПоискToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискToolStripMenuItem_Click);
             // 
@@ -202,7 +217,7 @@
             // 
             this.остановитьПоискToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("остановитьПоискToolStripMenuItem.Image")));
             this.остановитьПоискToolStripMenuItem.Name = "остановитьПоискToolStripMenuItem";
-            this.остановитьПоискToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.остановитьПоискToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.остановитьПоискToolStripMenuItem.Text = "Остановить поиск";
             this.остановитьПоискToolStripMenuItem.Click += new System.EventHandler(this.остановитьПоискToolStripMenuItem_Click);
             // 
@@ -218,7 +233,7 @@
             // 
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -495,16 +510,17 @@
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
             // 
-            // toolStripProgressBar1
+            // toolStripSeparator5
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(250, 16);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(248, 6);
             // 
-            // toolStripStatusLabel4
+            // запуститьПоискЧерезSeleniumToolStripMenuItem
             // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(23, 17);
-            this.toolStripStatusLabel4.Text = "0%";
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Name = "запуститьПоискЧерезSeleniumToolStripMenuItem";
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Text = "Запустить поиск через Selenium";
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискЧерезSeleniumToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -591,6 +607,8 @@
         private System.Windows.Forms.ToolStripMenuItem открытьSitemapФайлToolStripMenuItem;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem запуститьПоискЧерезSeleniumToolStripMenuItem;
     }
 }
 
