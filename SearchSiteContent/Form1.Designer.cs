@@ -45,6 +45,8 @@
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запуститьПоискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.остановитьПоискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -75,8 +77,6 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.запуститьПоискЧерезSeleniumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -221,6 +221,18 @@
             this.остановитьПоискToolStripMenuItem.Text = "Остановить поиск";
             this.остановитьПоискToolStripMenuItem.Click += new System.EventHandler(this.остановитьПоискToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(248, 6);
+            // 
+            // запуститьПоискЧерезSeleniumToolStripMenuItem
+            // 
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Name = "запуститьПоискЧерезSeleniumToolStripMenuItem";
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Text = "Запустить поиск через Selenium";
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискЧерезSeleniumToolStripMenuItem_Click);
+            // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -263,9 +275,11 @@
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "https://site.com/sitemap.xml"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(250, 25);
-            this.toolStripComboBox1.Text = "https://site.com/sitemap.xml";
+            this.toolStripComboBox1.Text = "https://mgts.ru/sitemap.xml";
             // 
             // toolStripButton1
             // 
@@ -509,18 +523,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(248, 6);
-            // 
-            // запуститьПоискЧерезSeleniumToolStripMenuItem
-            // 
-            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Name = "запуститьПоискЧерезSeleniumToolStripMenuItem";
-            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Text = "Запустить поиск через Selenium";
-            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискЧерезSeleniumToolStripMenuItem_Click);
             // 
             // Form1
             // 

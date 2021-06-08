@@ -101,6 +101,23 @@ namespace SearchSiteContent
             thread.Start();
         }
 
+        private void startSelenium()
+        {
+            consoleRichTextBox.Clear();
+            resultRichTextBox.Clear();
+            toolStripProgressBar1.Maximum = 0;
+            toolStripProgressBar1.Value = 0;
+            toolStripStatusLabel3.Text = "...";
+            toolStripStatusLabel4.Text = "0%";
+            addValueInComboBox(toolStripComboBox1);
+            addValueInComboBox(toolStripComboBox2);
+            sitemapPath = toolStripComboBox1.Text;
+            searchValue = toolStripComboBox2.Text;
+            addConsoleMessage("Поиск запущен");
+            thread = new Thread(runSeleniumSearch);
+            thread.Start();
+        }
+
         private void stop()
         {
             addConsoleMessage("Поиск прерван пользователем");
@@ -135,6 +152,7 @@ namespace SearchSiteContent
                 {
                     MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
                     addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
+                    stop();
                     return;
                 }
                     
@@ -208,6 +226,97 @@ namespace SearchSiteContent
             thread.Abort();
         }
 
+        private void runSeleniumSearch()
+        {
+            IWebDriver driver = new ChromeDriver();
+            try
+            {
+                driver.Manage().Window.Maximize();
+                
+                ArrayList targets;
+                ArrayList sitemaps;
+                sitemaps = new ArrayList();
+                targets = new ArrayList();
+
+                /* собираю все sitemap */
+                string page = getPageHtmlDOM(sitemapPath);
+                if (checkThisIsSitemap(page) == true) sitemaps.Add(sitemapPath);
+                else
+                {
+                    MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
+                    addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
+                    stop();
+                    return;
+                }
+
+                IList<IWebElement> elements;
+                for (int i = 0; i < sitemaps.Count; i++)
+                {
+                    driver.Navigate().GoToUrl(sitemaps[i].ToString());
+                    elements = driver.FindElements(By.XPath("//*[contains(text(), '.xml')]"));
+                    foreach(IWebElement element in elements)
+                    {
+                        if (element.Text == "") continue;
+                        if (element.Text.Contains(".xml") == true)
+                        {
+                            sitemaps.Add(element.Text);
+                        }
+                    }
+                }
+
+                /* собираю страницы из sitemap */
+                int index = 0;
+                int count = 0;
+                toolStripStatusLabel3.Text = "Чтение данных из sitemap: ...";
+                toolStripStatusLabel4.Text = "...";
+                foreach (string sitemapUrl in sitemaps)
+                {
+                    driver.Navigate().GoToUrl(sitemapUrl);
+                    elements = driver.FindElements(By.XPath("//*[contains(text(), 'http://') or contains(text(), 'https://')]"));
+                    index = 0;
+                    count = elements.Count;
+                    toolStripProgressBar1.Value = index;
+                    toolStripProgressBar1.Maximum = count;
+                    toolStripStatusLabel3.Text = "Чтение данных из sitemap: " + index.ToString() + "/" + count.ToString();
+                    foreach (IWebElement element in elements)
+                    {
+                        index++;
+                        toolStripProgressBar1.Value = index;
+                        toolStripStatusLabel3.Text = "Чтение данных из sitemap: " + index.ToString() + "/" + count.ToString();
+                        if (element.Text == "") continue;
+                        if (element.Text.Contains(".xml") == false && element.Text.Contains("www.sitemaps.org") == false)
+                        {
+                            targets.Add(element.Text);
+                        }
+                    }
+                    addConsoleMessage("Получил данные из sitemap: " + sitemapUrl);
+                }
+
+
+
+
+                toolStripStatusLabel4.Text = "100%";
+            }
+            catch (Exception error)
+            {
+                //MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
+                MessageBox.Show(error.ToString());
+            }
+            finally
+            {
+                endSearch();
+                driver.Close();
+                driver.Quit();
+                thread.Abort();
+            }
+
+            endSearch();
+            driver.Close();
+            driver.Quit();
+            thread.Abort();
+        }
+
         private void endSearch()
         {
             MessageBox.Show("Поиск завершен!");
@@ -217,6 +326,8 @@ namespace SearchSiteContent
                 addResultMessage("На страницах заданное значение для поиска - не найдено.");
             }
         }
+
+        
 
         private void openSitemapFile()
         {
@@ -428,6 +539,8 @@ namespace SearchSiteContent
 
         private void запуститьПоискЧерезSeleniumToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            startSelenium();   
+            /*
             // https://testguild.com/selenium-webdriver-visual-studio/
             //IWebDriver driver = new ChromeDriver(@"C:\GIT\SearchSiteContent\SearchSiteContent\bin\Debug\");
             IWebDriver driver = new ChromeDriver();
@@ -444,6 +557,7 @@ namespace SearchSiteContent
 
             driver.Close();
             driver.Quit();
+            */
         }
     }
 }
