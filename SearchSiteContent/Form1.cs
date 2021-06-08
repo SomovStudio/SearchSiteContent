@@ -226,13 +226,13 @@ namespace SearchSiteContent
             thread.Abort();
         }
 
-        private void runSeleniumSearch()
+        private void readSeleniumXML()
         {
             IWebDriver driver = new ChromeDriver();
             try
             {
                 driver.Manage().Window.Maximize();
-                
+
                 ArrayList targets;
                 ArrayList sitemaps;
                 sitemaps = new ArrayList();
@@ -254,7 +254,7 @@ namespace SearchSiteContent
                 {
                     driver.Navigate().GoToUrl(sitemaps[i].ToString());
                     elements = driver.FindElements(By.XPath("//*[contains(text(), '.xml')]"));
-                    foreach(IWebElement element in elements)
+                    foreach (IWebElement element in elements)
                     {
                         if (element.Text == "") continue;
                         if (element.Text.Contains(".xml") == true)
@@ -292,8 +292,110 @@ namespace SearchSiteContent
                     addConsoleMessage("Получил данные из sitemap: " + sitemapUrl);
                 }
 
+                toolStripStatusLabel4.Text = "100%";
+            }
+            catch (Exception error)
+            {
+                //MessageBox.Show(error.Message);
+                addConsoleMessage("Сообщение: " + error.Message);
+                MessageBox.Show(error.ToString());
+            }
+            finally
+            {
+                endSearch();
+                driver.Close();
+                driver.Quit();
+                thread.Abort();
+            }
 
+            endSearch();
+            driver.Close();
+            driver.Quit();
+            thread.Abort();
+        }
 
+        private void runSeleniumSearch()
+        {
+            IWebDriver driver = new ChromeDriver();
+            IList<IWebElement> elements;
+
+            try
+            {
+                ArrayList targets;
+                ArrayList sitemaps;
+                sitemaps = new ArrayList();
+                targets = new ArrayList();
+
+                /* собираю все sitemap */
+                string page = getPageHtmlDOM(sitemapPath);
+                if (checkThisIsSitemap(page) == true)
+                {
+                    sitemaps.Add(sitemapPath);
+                }
+                else
+                {
+                    MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
+                    addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
+                    stop();
+                    return;
+                }
+
+                for (int i = 0; i < sitemaps.Count; i++)
+                {
+                    page = getPageHtmlDOM(sitemaps[i].ToString());
+                    if (checkThisIsSitemap(page) == false) continue;
+                    addConsoleMessage("Чтение данных из сайтмап: " + sitemaps[i].ToString());
+                    ArrayList listSitemaps = readSitemap(page);
+                    foreach (string urlSitemap in listSitemaps)
+                    {
+                        if (urlSitemap.Contains(".xml") == true) sitemaps.Add(urlSitemap);
+                        else targets.Add(urlSitemap);
+                    }
+                }
+
+                /* Выполняю поиск по всем собранным url */
+                driver.Manage().Window.Maximize();
+
+                int index = 0;
+                int totalPages = targets.Count;
+                int onePercent = 0;
+                if (totalPages < 100) onePercent = (100 / totalPages);
+                else onePercent = (totalPages / 100);
+                toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
+                toolStripProgressBar1.Maximum = totalPages;
+                foreach (string target in targets)
+                {
+                    index++;
+                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
+                    toolStripProgressBar1.Value = index;
+
+                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
+                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+
+                    try
+                    {
+                        elements = null;
+                        driver.Navigate().GoToUrl(target);
+                        elements = driver.FindElements(By.XPath(searchValue));
+
+                        if(elements != null)
+                        {
+                            if(elements.Count > 0)
+                            {
+                                addConsoleMessage("Поиск значения на странице " + target + " - значение найдено");
+                                addResultMessage("Страница: " + target + " - найдено " + elements.Count.ToString() + " значений");
+                            }
+                            else
+                            {
+                                addConsoleMessage("Поиск значения на странице " + target + " - значение не найдено");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        addConsoleMessage("Поиск значения на странице " + target + " - " + ex.Message);
+                    }
+                }
 
                 toolStripStatusLabel4.Text = "100%";
             }
