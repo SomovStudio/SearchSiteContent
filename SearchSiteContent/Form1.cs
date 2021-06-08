@@ -429,7 +429,8 @@ namespace SearchSiteContent
         private void запуститьПоискЧерезSeleniumToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // https://testguild.com/selenium-webdriver-visual-studio/
-            IWebDriver driver = new ChromeDriver(@"C:\GIT\SearchSiteContent\SearchSiteContent\bin\Debug\");
+            //IWebDriver driver = new ChromeDriver(@"C:\GIT\SearchSiteContent\SearchSiteContent\bin\Debug\");
+            IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.google.com/");
 
