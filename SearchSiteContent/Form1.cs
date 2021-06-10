@@ -196,7 +196,11 @@ namespace SearchSiteContent
                 if (totalPages <= 0)
                 {
                     addConsoleMessage("Из sitemap файлов было получено " + totalPages.ToString() + " ссылок");
+                    addResultMessage("СООБЩЕНИЕ: Из sitemap не удалось прочитать ссылки из полей <loc>");
+                    addResultMessage("----------------------------------------------------------------------------------------------------------" + Environment.NewLine);
+                    addResultMessage(page);
                     thread.Abort();
+                    return;
                 }
 
                 if (totalPages < 100) onePercent = (100 / totalPages);
@@ -382,7 +386,11 @@ namespace SearchSiteContent
                 if (totalPages <= 0)
                 {
                     addConsoleMessage("Из sitemap файлов было получено " + totalPages.ToString() + " ссылок");
+                    addResultMessage("СООБЩЕНИЕ: Из sitemap не удалось прочитать ссылки из полей <loc>");
+                    addResultMessage("----------------------------------------------------------------------------------------------------------" + Environment.NewLine);
+                    addResultMessage(page);
                     thread.Abort();
+                    return;
                 }
 
                 if (totalPages < 100) onePercent = (100 / totalPages);
