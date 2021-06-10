@@ -45,7 +45,7 @@ namespace SearchSiteContent
             return list;
         }
 
-        private string getPageHtmlDOM(string page)
+        private string getPageHtmlDOM(string url)
         {
             /* Базовое соединение было закрыто
              * https://coderoad.ru/38137244/-%D0%91%D0%B0%D0%B7%D0%BE%D0%B2%D0%BE%D0%B5-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B1%D1%8B%D0%BB%D0%BE-%D0%B7%D0%B0%D0%BA%D1%80%D1%8B%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D1%88%D0%BB%D0%B0-%D0%BD%D0%B5%D0%BF%D1%80%D0%B5%D0%B4%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-%D0%BF%D1%80%D0%B8-%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B5
@@ -59,7 +59,7 @@ namespace SearchSiteContent
             using (WebClient web = new WebClient())
             {
                 web.Encoding = Encoding.UTF8;
-                html = web.DownloadString(page);
+                html = web.DownloadString(url);
             }
             return html;
         }
@@ -152,7 +152,6 @@ namespace SearchSiteContent
 
                 /* собираю все sitemap */
                 string page = getPageHtmlDOM(sitemapPath);
-                //MessageBox.Show(page);
                 if (checkThisIsSitemap(page) == true)
                 {
                     sitemaps.Add(sitemapPath);
@@ -164,8 +163,8 @@ namespace SearchSiteContent
                     stop();
                     return;
                 }
-                    
-                for(int i = 0; i < sitemaps.Count; i++)
+
+                for (int i = 0; i < sitemaps.Count; i++)
                 {
                     page = getPageHtmlDOM(sitemaps[i].ToString());
                     if (checkThisIsSitemap(page) == false) continue;
@@ -189,6 +188,13 @@ namespace SearchSiteContent
                 int index = 0;
                 int totalPages = targets.Count;
                 int onePercent = 0;
+
+                if (totalPages <= 0)
+                {
+                    addConsoleMessage("Из sitemap файлов было получено " + totalPages.ToString() + " ссылок");
+                    thread.Abort();
+                }
+
                 if (totalPages < 100) onePercent = (100 / totalPages);
                 else onePercent = (totalPages / 100);
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
@@ -368,6 +374,13 @@ namespace SearchSiteContent
                 int index = 0;
                 int totalPages = targets.Count;
                 int onePercent = 0;
+
+                if (totalPages <= 0)
+                {
+                    addConsoleMessage("Из sitemap файлов было получено " + totalPages.ToString() + " ссылок");
+                    thread.Abort();
+                }
+
                 if (totalPages < 100) onePercent = (100 / totalPages);
                 else onePercent = (totalPages / 100);
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
