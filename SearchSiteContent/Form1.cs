@@ -126,6 +126,11 @@ namespace SearchSiteContent
 
         private void start()
         {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Процесс поиска уже запущен");
+                return;
+            }
             consoleRichTextBox.Clear();
             resultRichTextBox.Clear();
             toolStripProgressBar1.Maximum = 0;
@@ -143,6 +148,11 @@ namespace SearchSiteContent
 
         private void startSelenium()
         {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Процесс поиска уже запущен");
+                return;
+            }
             consoleRichTextBox.Clear();
             resultRichTextBox.Clear();
             toolStripProgressBar1.Maximum = 0;
@@ -160,6 +170,12 @@ namespace SearchSiteContent
 
         private void stop()
         {
+            if(thread.ThreadState.ToString() == "Unstarted")
+            {
+                MessageBox.Show("Процесс поиска еще не запущен");
+                return;
+            }
+
             addConsoleMessage("Поиск прерван пользователем");
             endSearch();
             try

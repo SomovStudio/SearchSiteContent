@@ -229,6 +229,7 @@
             // 
             // запуститьПоискЧерезSeleniumToolStripMenuItem
             // 
+            this.запуститьПоискЧерезSeleniumToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("запуститьПоискЧерезSeleniumToolStripMenuItem.Image")));
             this.запуститьПоискЧерезSeleniumToolStripMenuItem.Name = "запуститьПоискЧерезSeleniumToolStripMenuItem";
             this.запуститьПоискЧерезSeleniumToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.запуститьПоискЧерезSeleniumToolStripMenuItem.Text = "Запустить поиск через Selenium";
@@ -271,8 +272,8 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(169, 22);
-            this.toolStripLabel1.Text = "Ссылка или файл на sitemap:";
+            this.toolStripLabel1.Size = new System.Drawing.Size(167, 22);
+            this.toolStripLabel1.Text = "Файл или ссылка на sitemap:";
             // 
             // toolStripComboBox1
             // 
