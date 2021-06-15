@@ -45,6 +45,33 @@ namespace SearchSiteContent
             return list;
         }
 
+        private ArrayList readXML(string filename)
+        {
+            ArrayList list = new ArrayList();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(filename);
+            XmlElement xRoot = xDoc.DocumentElement;
+            foreach (XmlNode xnode in xRoot)
+            {
+                for (int j = 0; j <= xnode.ChildNodes.Count; j++)
+                {
+                    if (xnode.ChildNodes[j].Name == "loc")
+                    {
+                        string xmlLink = xnode.ChildNodes[j].InnerText;
+                        list.Add(xmlLink);
+                        break;
+                    }
+                }
+            }
+
+            return list;
+        }
+
         private string getPageHtmlDOM(string url)
         {
             /* Базовое соединение было закрыто
@@ -68,6 +95,7 @@ namespace SearchSiteContent
             return html;
         }
 
+        
         private bool checkThisIsSitemap(string page)
         {
             return page.Contains("www.sitemaps.org/schemas/sitemap/");
@@ -155,40 +183,33 @@ namespace SearchSiteContent
                 targets = new ArrayList();
 
                 /* собираю все sitemap */
-                string page = getPageHtmlDOM(sitemapPath);
-                if (checkThisIsSitemap(page) == true)
-                {
-                    sitemaps.Add(sitemapPath);
-                }
-                else
-                {
-                    MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
-                    addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
-                    stop();
-                    return;
-                }
-
+                sitemaps.Add(sitemapPath);
                 for (int i = 0; i < sitemaps.Count; i++)
                 {
-                    page = getPageHtmlDOM(sitemaps[i].ToString());
-                    if (checkThisIsSitemap(page) == false) continue;
-                    addConsoleMessage("Чтение данных из сайтмап: " + sitemaps[i].ToString());
-                    ArrayList listSitemaps = readSitemap(page);
-                    foreach (string urlSitemap in listSitemaps)
+                    string xmlLink = sitemaps[i].ToString();
+                    addConsoleMessage("Чтение данных из сайтмап: " + xmlLink);
+                    if (xmlLink.Contains(".xml") == true)
                     {
-                        if (urlSitemap.Contains(".xml") == true)
+                        ArrayList listSitemaps = readXML(xmlLink);
+                        foreach (string urlSitemap in listSitemaps)
                         {
-                            sitemaps.Add(urlSitemap);
-                            //addConsoleMessage("Чтение данных из сайтмап: " + urlSitemap);
-                        }
-                        else
-                        {
-                            targets.Add(urlSitemap);
+                            if (urlSitemap.Contains(".xml") == true)
+                            {
+                                sitemaps.Add(urlSitemap);
+                            }
+                            else
+                            {
+                                targets.Add(urlSitemap);
+                            }
                         }
                     }
                 }
 
+                addConsoleMessage("Было прочитано: " + sitemaps.Count.ToString() + " xml файлов (sitemap)");
+                addConsoleMessage("Было получено " + targets.Count.ToString() + " ссылок");
+
                 /* Выполняю поиск по всем собранным url */
+                string page = "";
                 int index = 0;
                 int totalPages = targets.Count;
                 int onePercent = 0;
@@ -350,35 +371,35 @@ namespace SearchSiteContent
                 targets = new ArrayList();
 
                 /* собираю все sitemap */
-                string page = getPageHtmlDOM(sitemapPath);
-                if (checkThisIsSitemap(page) == true)
-                {
-                    sitemaps.Add(sitemapPath);
-                }
-                else
-                {
-                    MessageBox.Show("Сообщение: вы не выбрали файл sitemap.xml");
-                    addConsoleMessage("Сообщение: вы не выбрали файл sitemap.xml");
-                    stop();
-                    return;
-                }
-
+                sitemaps.Add(sitemapPath);
                 for (int i = 0; i < sitemaps.Count; i++)
                 {
-                    page = getPageHtmlDOM(sitemaps[i].ToString());
-                    if (checkThisIsSitemap(page) == false) continue;
-                    addConsoleMessage("Чтение данных из сайтмап: " + sitemaps[i].ToString());
-                    ArrayList listSitemaps = readSitemap(page);
-                    foreach (string urlSitemap in listSitemaps)
+                    string xmlLink = sitemaps[i].ToString();
+                    addConsoleMessage("Чтение данных из сайтмап: " + xmlLink);
+                    if (xmlLink.Contains(".xml") == true)
                     {
-                        if (urlSitemap.Contains(".xml") == true) sitemaps.Add(urlSitemap);
-                        else targets.Add(urlSitemap);
+                        ArrayList listSitemaps = readXML(xmlLink);
+                        foreach (string urlSitemap in listSitemaps)
+                        {
+                            if (urlSitemap.Contains(".xml") == true)
+                            {
+                                sitemaps.Add(urlSitemap);
+                            }
+                            else
+                            {
+                                targets.Add(urlSitemap);
+                            }
+                        }
                     }
                 }
+
+                addConsoleMessage("Было прочитано: " + sitemaps.Count.ToString() + " xml файлов (sitemap)");
+                addConsoleMessage("Было получено " + targets.Count.ToString() + " ссылок");
 
                 /* Выполняю поиск по всем собранным url */
                 driver.Manage().Window.Maximize();
 
+                string page = "";
                 int index = 0;
                 int totalPages = targets.Count;
                 int onePercent = 0;
