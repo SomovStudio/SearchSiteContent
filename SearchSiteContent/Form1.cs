@@ -732,5 +732,28 @@ namespace SearchSiteContent
             driver.Quit();
             */
         }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBox1.Text == "")
+            {
+                MessageBox.Show("Нельзя добавить пустое значение");
+                return;
+            }
+            foreach (string value in listBox1.Items)
+            {
+                if(value == toolStripTextBox1.Text)
+                {
+                    MessageBox.Show("Значение " + toolStripTextBox1.Text + " уже добавлено в список");
+                    return;
+                }
+            }
+            listBox1.Items.Add(toolStripTextBox1.Text);
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex > -1) listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+        }
     }
 }
