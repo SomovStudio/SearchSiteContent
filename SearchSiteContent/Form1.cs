@@ -755,5 +755,17 @@ namespace SearchSiteContent
         {
             if(listBox1.SelectedIndex > -1) listBox1.Items.RemoveAt(listBox1.SelectedIndex);
         }
+
+        private void обновитьChromedriverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(@"https://chromedriver.chromium.org/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
     }
 }
