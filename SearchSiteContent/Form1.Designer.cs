@@ -47,6 +47,8 @@
             this.остановитьПоискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.запуститьПоискЧерезSeleniumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сервисToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновитьChromedriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -86,8 +88,6 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.сервисToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьChromedriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -250,6 +250,22 @@
             this.запуститьПоискЧерезSeleniumToolStripMenuItem.Text = "Запустить поиск через Selenium";
             this.запуститьПоискЧерезSeleniumToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискЧерезSeleniumToolStripMenuItem_Click);
             // 
+            // сервисToolStripMenuItem
+            // 
+            this.сервисToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.обновитьChromedriverToolStripMenuItem});
+            this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
+            this.сервисToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.сервисToolStripMenuItem.Text = "Сервис";
+            // 
+            // обновитьChromedriverToolStripMenuItem
+            // 
+            this.обновитьChromedriverToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("обновитьChromedriverToolStripMenuItem.Image")));
+            this.обновитьChromedriverToolStripMenuItem.Name = "обновитьChromedriverToolStripMenuItem";
+            this.обновитьChromedriverToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.обновитьChromedriverToolStripMenuItem.Text = "Обновить Chromedriver";
+            this.обновитьChromedriverToolStripMenuItem.Click += new System.EventHandler(this.обновитьChromedriverToolStripMenuItem_Click);
+            // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -262,7 +278,7 @@
             // 
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -614,7 +630,7 @@
             this.panel2.Controls.Add(this.consoleRichTextBox);
             this.panel2.Location = new System.Drawing.Point(3, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1210, 179);
+            this.panel2.Size = new System.Drawing.Size(878, 179);
             this.panel2.TabIndex = 4;
             // 
             // consoleRichTextBox
@@ -625,7 +641,7 @@
             this.consoleRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.consoleRichTextBox.Name = "consoleRichTextBox";
             this.consoleRichTextBox.ReadOnly = true;
-            this.consoleRichTextBox.Size = new System.Drawing.Size(1208, 177);
+            this.consoleRichTextBox.Size = new System.Drawing.Size(876, 177);
             this.consoleRichTextBox.TabIndex = 0;
             this.consoleRichTextBox.Text = "";
             this.consoleRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.consoleRichTextBox_LinkClicked);
@@ -637,22 +653,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
-            // 
-            // сервисToolStripMenuItem
-            // 
-            this.сервисToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обновитьChromedriverToolStripMenuItem});
-            this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
-            this.сервисToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.сервисToolStripMenuItem.Text = "Сервис";
-            // 
-            // обновитьChromedriverToolStripMenuItem
-            // 
-            this.обновитьChromedriverToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("обновитьChromedriverToolStripMenuItem.Image")));
-            this.обновитьChromedriverToolStripMenuItem.Name = "обновитьChromedriverToolStripMenuItem";
-            this.обновитьChromedriverToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.обновитьChromedriverToolStripMenuItem.Text = "Обновить Chromedriver";
-            this.обновитьChromedriverToolStripMenuItem.Click += new System.EventHandler(this.обновитьChromedriverToolStripMenuItem_Click);
             // 
             // Form1
             // 
