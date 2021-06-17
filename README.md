@@ -10,4 +10,4 @@
   <img src="https://somovstudio.github.io/img/projects/search_site_content/search_site_content.png">
 </p>
 
-Системные требования: Windows 7, 8, 10
+Системные требования: Windows 7, 8, 10 (.Net Framework 4.5)
