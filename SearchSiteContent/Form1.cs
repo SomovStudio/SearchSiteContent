@@ -272,6 +272,7 @@ namespace SearchSiteContent
                         {
                             foreach (string searchValue2 in listBox1.Items)
                             {
+                                if (searchValue2 == "") continue;
                                 if (searchContentOnPage(pagetarget, searchValue2) == true)
                                 {
                                     addConsoleMessage("Поиск значения [" + searchValue2 + "] на странице [" + target + "] - значение найдено");
@@ -465,26 +466,30 @@ namespace SearchSiteContent
                     {
                         elements = null;
                         driver.Navigate().GoToUrl(target);
-                        elements = driver.FindElements(By.XPath(searchValue));
-
-                        if(elements != null)
+                        if(searchValue != "")
                         {
-                            if(elements.Count > 0)
+                            elements = driver.FindElements(By.XPath(searchValue));
+                            if (elements != null)
                             {
-                                addConsoleMessage("Поиск значения [" + searchValue + "] на странице [" + target + "] - значение найдено");
-                                addResultMessage("Страница [" + target + "] значение [" + searchValue + "] - найдено" + elements.Count.ToString() + " значений");
-                            }
-                            else
-                            {
-                                addConsoleMessage("Поиск значения [" + searchValue + "] на странице [" + target + "] - значение не найдено");
+                                if (elements.Count > 0)
+                                {
+                                    addConsoleMessage("Поиск значения [" + searchValue + "] на странице [" + target + "] - значение найдено");
+                                    addResultMessage("Страница [" + target + "] значение [" + searchValue + "] - найдено" + elements.Count.ToString() + " значений");
+                                }
+                                else
+                                {
+                                    addConsoleMessage("Поиск значения [" + searchValue + "] на странице [" + target + "] - значение не найдено");
+                                }
                             }
                         }
+                        
 
                         if(listBox1.Items.Count > 0)
                         {
                             foreach (string searchValue2 in listBox1.Items)
                             {
-                                elements = driver.FindElements(By.XPath(searchValue));
+                                if (searchValue2 == "") continue;
+                                elements = driver.FindElements(By.XPath(searchValue2));
                                 if (elements.Count > 0)
                                 {
                                     addConsoleMessage("Поиск значения [" + searchValue2 + "] на странице [" + target + "] - значение найдено");
@@ -507,9 +512,9 @@ namespace SearchSiteContent
             }
             catch (Exception error)
             {
-                //MessageBox.Show(error.Message);
+                MessageBox.Show(error.Message);
                 addConsoleMessage("Сообщение: " + error.Message);
-                MessageBox.Show(error.ToString());
+                //MessageBox.Show(error.ToString());
             }
             finally
             {
@@ -788,6 +793,7 @@ namespace SearchSiteContent
                 }
             }
             listBox1.Items.Add(toolStripTextBox1.Text);
+            toolStripTextBox1.Text = "";
         }
 
         private void toolStripButton7_Click(object sender, EventArgs e)
