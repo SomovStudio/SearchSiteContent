@@ -88,6 +88,16 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.idexampleidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.classclassnameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.namenameAndtypesubmitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.containstextexampleTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.containsclassclassNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ididnameparentdivToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -406,6 +416,7 @@
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(0, 25);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(248, 235);
@@ -416,7 +427,9 @@
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox1,
             this.toolStripButton6,
-            this.toolStripButton7});
+            this.toolStripButton7,
+            this.toolStripSeparator6,
+            this.toolStripDropDownButton1});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(248, 25);
@@ -427,7 +440,7 @@
             // 
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 25);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(125, 25);
             // 
             // toolStripButton6
             // 
@@ -654,6 +667,85 @@
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.idexampleidToolStripMenuItem,
+            this.classclassnameToolStripMenuItem,
+            this.namenameAndtypesubmitToolStripMenuItem,
+            this.containstextexampleTextToolStripMenuItem,
+            this.containsclassclassNameToolStripMenuItem,
+            this.ididnameparentdivToolStripMenuItem,
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "Шаблоны xpath локаторов";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(320, 22);
+            this.toolStripMenuItem2.Text = "//*";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // idexampleidToolStripMenuItem
+            // 
+            this.idexampleidToolStripMenuItem.Name = "idexampleidToolStripMenuItem";
+            this.idexampleidToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.idexampleidToolStripMenuItem.Text = "//*[@id=\'id-name\']";
+            this.idexampleidToolStripMenuItem.Click += new System.EventHandler(this.idexampleidToolStripMenuItem_Click);
+            // 
+            // classclassnameToolStripMenuItem
+            // 
+            this.classclassnameToolStripMenuItem.Name = "classclassnameToolStripMenuItem";
+            this.classclassnameToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.classclassnameToolStripMenuItem.Text = "//*[@class=\'class-name\']";
+            this.classclassnameToolStripMenuItem.Click += new System.EventHandler(this.classclassnameToolStripMenuItem_Click);
+            // 
+            // namenameAndtypesubmitToolStripMenuItem
+            // 
+            this.namenameAndtypesubmitToolStripMenuItem.Name = "namenameAndtypesubmitToolStripMenuItem";
+            this.namenameAndtypesubmitToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.namenameAndtypesubmitToolStripMenuItem.Text = "//*[@name=’name’ and @type=’submit’]";
+            this.namenameAndtypesubmitToolStripMenuItem.Click += new System.EventHandler(this.namenameAndtypesubmitToolStripMenuItem_Click);
+            // 
+            // containstextexampleTextToolStripMenuItem
+            // 
+            this.containstextexampleTextToolStripMenuItem.Name = "containstextexampleTextToolStripMenuItem";
+            this.containstextexampleTextToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.containstextexampleTextToolStripMenuItem.Text = "//*[contains(text(), ’example text’)]";
+            this.containstextexampleTextToolStripMenuItem.Click += new System.EventHandler(this.containstextexampleTextToolStripMenuItem_Click);
+            // 
+            // containsclassclassNameToolStripMenuItem
+            // 
+            this.containsclassclassNameToolStripMenuItem.Name = "containsclassclassNameToolStripMenuItem";
+            this.containsclassclassNameToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.containsclassclassNameToolStripMenuItem.Text = "//*[contains(@class, ’class name’)]";
+            this.containsclassclassNameToolStripMenuItem.Click += new System.EventHandler(this.containsclassclassNameToolStripMenuItem_Click);
+            // 
+            // ididnameparentdivToolStripMenuItem
+            // 
+            this.ididnameparentdivToolStripMenuItem.Name = "ididnameparentdivToolStripMenuItem";
+            this.ididnameparentdivToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.ididnameparentdivToolStripMenuItem.Text = "//*[@id=\'id-name\']/parent::div";
+            this.ididnameparentdivToolStripMenuItem.Click += new System.EventHandler(this.ididnameparentdivToolStripMenuItem_Click);
+            // 
+            // inputididnamefollowingsiblinginput4ToolStripMenuItem
+            // 
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem.Name = "inputididnamefollowingsiblinginput4ToolStripMenuItem";
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem.Text = "//*[@id=’id-name’]/following-sibling::input[4]";
+            this.inputididnamefollowingsiblinginput4ToolStripMenuItem.Click += new System.EventHandler(this.inputididnamefollowingsiblinginput4ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -758,6 +850,16 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripMenuItem сервисToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьChromedriverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem idexampleidToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem classclassnameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem namenameAndtypesubmitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem containstextexampleTextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem containsclassclassNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ididnameparentdivToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inputididnamefollowingsiblinginput4ToolStripMenuItem;
     }
 }
 

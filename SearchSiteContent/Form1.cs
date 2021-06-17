@@ -534,8 +534,7 @@ namespace SearchSiteContent
                 addResultMessage("На страницах заданное значение для поиска - не найдено.");
             }
         }
-
-        
+                
 
         private void openSitemapFile()
         {
@@ -617,6 +616,11 @@ namespace SearchSiteContent
             {
                 addConsoleMessage("Сообщение: " + ex.Message);
             }
+        }
+
+        private void addXPathInField(string xpath)
+        {
+            toolStripTextBox1.Text = xpath;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -801,6 +805,46 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            addXPathInField(toolStripMenuItem2.Text);
+        }
+
+        private void idexampleidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(idexampleidToolStripMenuItem.Text);
+        }
+
+        private void classclassnameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(classclassnameToolStripMenuItem.Text);
+        }
+
+        private void namenameAndtypesubmitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(namenameAndtypesubmitToolStripMenuItem.Text);
+        }
+
+        private void containstextexampleTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(containstextexampleTextToolStripMenuItem.Text);
+        }
+
+        private void containsclassclassNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(containsclassclassNameToolStripMenuItem.Text);
+        }
+
+        private void ididnameparentdivToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(ididnameparentdivToolStripMenuItem.Text);
+        }
+
+        private void inputididnamefollowingsiblinginput4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addXPathInField(inputididnamefollowingsiblinginput4ToolStripMenuItem.Text);
         }
     }
 }
