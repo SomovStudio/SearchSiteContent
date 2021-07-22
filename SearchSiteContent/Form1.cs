@@ -90,6 +90,7 @@ namespace SearchSiteContent
             using (WebClient web = new WebClient())
             {
                 web.Encoding = Encoding.UTF8;
+                if(toolStripTextBox2.Text != "") web.Headers.Add("user-agent", toolStripTextBox2.Text);
                 html = web.DownloadString(url);
             }
             return html;
