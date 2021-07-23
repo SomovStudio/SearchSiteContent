@@ -144,6 +144,7 @@ namespace SearchSiteContent
             sitemapPath = toolStripComboBox1.Text;
             searchValue = toolStripComboBox2.Text;
             addConsoleMessage("Поиск запущен");
+            if (toolStripTextBox2.Text != "") addConsoleMessage("User-agent: " + toolStripTextBox2.Text);
             thread = new Thread(runSearch);
             thread.Start();
         }
@@ -252,8 +253,10 @@ namespace SearchSiteContent
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
 
-                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
-                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent);
+                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent);
+                    if (Convert.ToInt32(toolStripStatusLabel4.Text) > 99) toolStripStatusLabel4.Text = "99%";
+                    else toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + "%";
 
                     try
                     {
@@ -460,7 +463,7 @@ namespace SearchSiteContent
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
 
-                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
+                    if (totalPages < 100 && onePercent > 0)toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
                     if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
 
                     try

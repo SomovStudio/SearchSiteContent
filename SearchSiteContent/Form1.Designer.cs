@@ -61,6 +61,9 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel5 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -98,9 +101,6 @@
             this.consoleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -126,9 +126,9 @@
             this.toolStripStatusLabel3,
             this.toolStripProgressBar1,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(834, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -170,7 +170,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(834, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -312,7 +312,7 @@
             this.toolStripTextBox2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(834, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -324,8 +324,6 @@
             // 
             // toolStripComboBox1
             // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "https://site.com/sitemap.xml"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(250, 25);
             this.toolStripComboBox1.Text = "https://site.com/sitemap.xml";
@@ -382,6 +380,23 @@
             this.toolStripButton3.Text = "Остановить поиск по сайту";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(70, 15);
+            this.toolStripLabel3.Text = "User-Agent:";
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -400,8 +415,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
-            this.splitContainer1.Size = new System.Drawing.Size(834, 490);
-            this.splitContainer1.SplitterDistance = 285;
+            this.splitContainer1.Size = new System.Drawing.Size(984, 590);
+            this.splitContainer1.SplitterDistance = 343;
             this.splitContainer1.TabIndex = 3;
             // 
             // panel5
@@ -412,9 +427,9 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.listBox1);
             this.panel5.Controls.Add(this.toolStrip3);
-            this.panel5.Location = new System.Drawing.Point(578, 20);
+            this.panel5.Location = new System.Drawing.Point(728, 20);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(250, 262);
+            this.panel5.Size = new System.Drawing.Size(250, 320);
             this.panel5.TabIndex = 6;
             // 
             // listBox1
@@ -425,7 +440,7 @@
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(0, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(248, 235);
+            this.listBox1.Size = new System.Drawing.Size(248, 293);
             this.listBox1.TabIndex = 1;
             // 
             // toolStrip3
@@ -552,7 +567,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(575, 0);
+            this.panel4.Location = new System.Drawing.Point(725, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(256, 21);
             this.panel4.TabIndex = 5;
@@ -583,11 +598,13 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(622, 21);
+            this.panel7.Size = new System.Drawing.Size(719, 21);
             this.panel7.TabIndex = 3;
             // 
             // label7
@@ -597,7 +614,7 @@
             this.label7.BackColor = System.Drawing.Color.SlateBlue;
             this.label7.Location = new System.Drawing.Point(3, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(616, 2);
+            this.label7.Size = new System.Drawing.Size(720, 2);
             this.label7.TabIndex = 2;
             this.label7.Text = "label7";
             // 
@@ -625,7 +642,7 @@
             this.panel3.Controls.Add(this.toolStrip2);
             this.panel3.Location = new System.Drawing.Point(3, 20);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(566, 262);
+            this.panel3.Size = new System.Drawing.Size(716, 320);
             this.panel3.TabIndex = 4;
             // 
             // resultRichTextBox
@@ -636,7 +653,7 @@
             this.resultRichTextBox.Location = new System.Drawing.Point(0, 25);
             this.resultRichTextBox.Name = "resultRichTextBox";
             this.resultRichTextBox.ReadOnly = true;
-            this.resultRichTextBox.Size = new System.Drawing.Size(564, 235);
+            this.resultRichTextBox.Size = new System.Drawing.Size(714, 293);
             this.resultRichTextBox.TabIndex = 2;
             this.resultRichTextBox.Text = "";
             this.resultRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.resultRichTextBox_LinkClicked);
@@ -650,7 +667,7 @@
             this.toolStripButton5});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(564, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(714, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -692,7 +709,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 20);
+            this.panel1.Size = new System.Drawing.Size(984, 20);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -716,7 +733,7 @@
             this.label2.BackColor = System.Drawing.Color.DimGray;
             this.label2.Location = new System.Drawing.Point(3, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(828, 2);
+            this.label2.Size = new System.Drawing.Size(978, 2);
             this.label2.TabIndex = 1;
             // 
             // panel2
@@ -728,7 +745,7 @@
             this.panel2.Controls.Add(this.consoleRichTextBox);
             this.panel2.Location = new System.Drawing.Point(3, 19);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(828, 179);
+            this.panel2.Size = new System.Drawing.Size(978, 221);
             this.panel2.TabIndex = 4;
             // 
             // consoleRichTextBox
@@ -739,7 +756,7 @@
             this.consoleRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.consoleRichTextBox.Name = "consoleRichTextBox";
             this.consoleRichTextBox.ReadOnly = true;
-            this.consoleRichTextBox.Size = new System.Drawing.Size(826, 177);
+            this.consoleRichTextBox.Size = new System.Drawing.Size(976, 219);
             this.consoleRichTextBox.TabIndex = 0;
             this.consoleRichTextBox.Text = "";
             this.consoleRichTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.consoleRichTextBox_LinkClicked);
@@ -752,28 +769,11 @@
             // 
             this.saveFileDialog1.Filter = "*.txt|*.txt";
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(70, 15);
-            this.toolStripLabel3.Text = "User-Agent:";
-            // 
-            // toolStripTextBox2
-            // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 561);
+            this.ClientSize = new System.Drawing.Size(984, 661);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
