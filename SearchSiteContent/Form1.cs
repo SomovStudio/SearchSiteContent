@@ -243,20 +243,18 @@ namespace SearchSiteContent
                     return;
                 }
 
-                if (totalPages < 100) onePercent = (100 / totalPages);
-                else onePercent = (totalPages / 100);
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
                 toolStripProgressBar1.Maximum = totalPages;
+                int percent = 0;
+
                 foreach (string target in targets)
                 {
                     index++;
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
 
-                    if (totalPages < 100 && onePercent > 0) toolStripStatusLabel4.Text = Convert.ToString(index * onePercent);
-                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent);
-                    if (Convert.ToInt32(toolStripStatusLabel4.Text) > 99) toolStripStatusLabel4.Text = "99%";
-                    else toolStripStatusLabel4.Text = toolStripStatusLabel4.Text + "%";
+                    percent = (int)(((double)toolStripProgressBar1.Value / (double)toolStripProgressBar1.Maximum) * 100);
+                    toolStripStatusLabel4.Text = Convert.ToString(percent) + "%";
 
                     try
                     {
@@ -399,7 +397,19 @@ namespace SearchSiteContent
 
         private void runSeleniumSearch()
         {
-            IWebDriver driver = new ChromeDriver();
+
+            IWebDriver driver;
+            if (toolStripTextBox2.Text != "")
+            {
+                ChromeOptions options = new ChromeOptions();
+                options.AddArgument("--user-agent=" + toolStripTextBox2.Text);
+                driver = new ChromeDriver(options);
+            }
+            else
+            {
+                driver = new ChromeDriver();
+            }
+
             IList<IWebElement> elements;
 
             try
@@ -453,8 +463,7 @@ namespace SearchSiteContent
                     return;
                 }
 
-                if (totalPages < 100) onePercent = (100 / totalPages);
-                else onePercent = (totalPages / 100);
+                int percent = 0;
                 toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
                 toolStripProgressBar1.Maximum = totalPages;
                 foreach (string target in targets)
@@ -463,8 +472,8 @@ namespace SearchSiteContent
                     toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
                     toolStripProgressBar1.Value = index;
 
-                    if (totalPages < 100 && onePercent > 0)toolStripStatusLabel4.Text = Convert.ToString(index * onePercent) + "%";
-                    if (totalPages >= 100) toolStripStatusLabel4.Text = Convert.ToString(index / onePercent) + "%";
+                    percent = (int)(((double)toolStripProgressBar1.Value / (double)toolStripProgressBar1.Maximum) * 100);
+                    toolStripStatusLabel4.Text = Convert.ToString(percent) + "%";
 
                     try
                     {
