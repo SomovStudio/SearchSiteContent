@@ -2,7 +2,7 @@
 Поиска контента на страницах сайта.
 
 <br>
-Скачать архив: https://github.com/SomovStudio/SearchSiteContent/archive/refs/tags/1.1.zip
+Скачать архив: https://github.com/SomovStudio/SearchSiteContent/archive/refs/tags/1.2.zip
 
 <hr>
 
