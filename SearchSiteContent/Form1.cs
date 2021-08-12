@@ -53,8 +53,23 @@ namespace SearchSiteContent
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(filename);
+            XmlDocument xDoc;
+            if (toolStripTextBox2.Text != "")
+            {
+                WebClient client = new WebClient();
+                client.Headers["User-Agent"] = toolStripTextBox2.Text;
+                client.Headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                string data = client.DownloadString(filename);
+
+                xDoc = new XmlDocument();
+                xDoc.LoadXml(data);
+            }
+            else
+            {
+                xDoc = new XmlDocument();
+                xDoc.Load(filename);
+            }
+            
             XmlElement xRoot = xDoc.DocumentElement;
             foreach (XmlNode xnode in xRoot)
             {
