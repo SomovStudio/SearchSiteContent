@@ -1,4 +1,4 @@
-# Search Site Content
+# SearchSiteContent
 Поиска контента на страницах сайта.
 
 <br>
