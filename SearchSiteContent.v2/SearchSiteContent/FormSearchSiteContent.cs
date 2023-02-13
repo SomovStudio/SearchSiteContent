@@ -455,6 +455,11 @@ namespace SearchSiteContent
             stop();
         }
 
+        private void остановитьПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stop();
+        }
+
         private void richTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             try
@@ -465,6 +470,22 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(error.Message);
             }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void запуститьПродвинутыйПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
         }
     }
 }
