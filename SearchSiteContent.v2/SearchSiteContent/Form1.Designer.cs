@@ -237,6 +237,7 @@
             this.открытьSitemapФайлToolStripMenuItem.Name = "открытьSitemapФайлToolStripMenuItem";
             this.открытьSitemapФайлToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
             this.открытьSitemapФайлToolStripMenuItem.Text = "Открыть файл sitemap.xml";
+            this.открытьSitemapФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьSitemapФайлToolStripMenuItem_Click);
             // 
             // сохранитьЛогКонсолиToolStripMenuItem
             // 
@@ -404,6 +405,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "Открыть файл sitemap.xml";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator1
             // 
