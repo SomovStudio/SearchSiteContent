@@ -205,5 +205,88 @@ namespace SearchSiteContent
         {
             loadSitemapUrl();
         }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBoxValue.Text == "")
+            {
+                MessageBox.Show("Нельзя добавить пустое значение", "Сообщение");
+                return;
+            }
+            foreach (string value in listBoxValues.Items)
+            {
+                if (value == toolStripTextBoxValue.Text)
+                {
+                    MessageBox.Show("Значение " + toolStripTextBoxValue.Text + " уже добавлено в список", "Сообщение");
+                    return;
+                }
+            }
+            listBoxValues.Items.Add(toolStripTextBoxValue.Text);
+            toolStripTextBoxValue.Text = "";
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            if (listBoxValues.SelectedIndex > -1) listBoxValues.Items.RemoveAt(listBoxValues.SelectedIndex);
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBoxValueXPath.Text == "")
+            {
+                MessageBox.Show("Нельзя добавить пустое значение", "Сообщение");
+                return;
+            }
+            foreach (string value in listBoxValuesXPath.Items)
+            {
+                if (value == toolStripTextBoxValueXPath.Text)
+                {
+                    MessageBox.Show("Значение " + toolStripTextBoxValueXPath.Text + " уже добавлено в список", "Сообщение");
+                    return;
+                }
+            }
+            listBoxValuesXPath.Items.Add(toolStripTextBoxValueXPath.Text);
+            toolStripTextBoxValueXPath.Text = "";
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            if (listBoxValuesXPath.SelectedIndex > -1) listBoxValuesXPath.Items.RemoveAt(listBoxValuesXPath.SelectedIndex);
+        }
+
+        private void addXPathInField(object sender, EventArgs e)
+        {
+            toolStripTextBoxValueXPath.Text = ((ToolStripMenuItem)sender).Text;
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBoxValueCSS.Text == "")
+            {
+                MessageBox.Show("Нельзя добавить пустое значение", "Сообщение");
+                return;
+            }
+            foreach (string value in listBoxValuesCSS.Items)
+            {
+                if (value == toolStripTextBoxValueCSS.Text)
+                {
+                    MessageBox.Show("Значение " + toolStripTextBoxValueCSS.Text + " уже добавлено в список", "Сообщение");
+                    return;
+                }
+            }
+            listBoxValuesCSS.Items.Add(toolStripTextBoxValueCSS.Text);
+            toolStripTextBoxValueCSS.Text = "";
+        }
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            if (listBoxValuesCSS.SelectedIndex > -1) listBoxValuesCSS.Items.RemoveAt(listBoxValuesCSS.SelectedIndex);
+        }
+
+        private void addCSSInField(object sender, EventArgs e)
+        {
+            toolStripTextBoxValueCSS.Text = ((ToolStripMenuItem)sender).Text;
+        }
+
     }
 }
