@@ -17,7 +17,7 @@ namespace SearchSiteContent
             InitializeComponent();
         }
 
-        public Form1 Parent;
+        public FormSearchSiteContent Parent;
 
         private void FormInputBox_Load(object sender, EventArgs e)
         {

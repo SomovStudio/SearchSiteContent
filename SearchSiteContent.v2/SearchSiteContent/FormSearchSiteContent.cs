@@ -15,11 +15,11 @@ using System.Xml;
 
 namespace SearchSiteContent
 {
-    public partial class Form1 : Form
+    public partial class FormSearchSiteContent : Form
     {
         private Thread thread;
 
-        public Form1()
+        public FormSearchSiteContent()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
