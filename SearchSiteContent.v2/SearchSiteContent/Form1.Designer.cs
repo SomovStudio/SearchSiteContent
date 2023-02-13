@@ -89,7 +89,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.toolStripValue = new System.Windows.Forms.ToolStrip();
-            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxValue = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -104,8 +104,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.toolStripValueXPath = new System.Windows.Forms.ToolStrip();
-            this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripXPath = new System.Windows.Forms.ToolStrip();
+            this.toolStripTextBoxValueXPath = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -120,7 +120,7 @@
             this.inputididnamefollowingsiblinginput4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label11 = new System.Windows.Forms.Label();
             this.toolStripValueCSS = new System.Windows.Forms.ToolStrip();
-            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxValueCSS = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -148,6 +148,13 @@
             this.richTextBoxValueNotFound = new System.Windows.Forms.RichTextBox();
             this.textBoxUserAgent = new System.Windows.Forms.TextBox();
             this.checkBoxUserAgent = new System.Windows.Forms.CheckBox();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripComboBoxFind = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -181,12 +188,13 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.toolStripValueXPath.SuspendLayout();
+            this.toolStripXPath.SuspendLayout();
             this.toolStripValueCSS.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -215,8 +223,8 @@
             this.открытьSitemapФайлToolStripMenuItem,
             this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem,
             this.toolStripSeparator3,
-            this.сохранитьЛогКонсолиToolStripMenuItem,
             this.сохранитьРезультатПоискаToolStripMenuItem,
+            this.сохранитьЛогКонсолиToolStripMenuItem,
             this.toolStripSeparator4,
             this.закрытьToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -232,17 +240,20 @@
             // 
             // сохранитьЛогКонсолиToolStripMenuItem
             // 
+            this.сохранитьЛогКонсолиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem,
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem});
             this.сохранитьЛогКонсолиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьЛогКонсолиToolStripMenuItem.Image")));
             this.сохранитьЛогКонсолиToolStripMenuItem.Name = "сохранитьЛогКонсолиToolStripMenuItem";
             this.сохранитьЛогКонсолиToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
-            this.сохранитьЛогКонсолиToolStripMenuItem.Text = "Сохранить лог консоли";
+            this.сохранитьЛогКонсолиToolStripMenuItem.Text = "Сохранить результаты поиска:";
             // 
             // сохранитьРезультатПоискаToolStripMenuItem
             // 
             this.сохранитьРезультатПоискаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьРезультатПоискаToolStripMenuItem.Image")));
             this.сохранитьРезультатПоискаToolStripMenuItem.Name = "сохранитьРезультатПоискаToolStripMenuItem";
             this.сохранитьРезультатПоискаToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
-            this.сохранитьРезультатПоискаToolStripMenuItem.Text = "Сохранить результат поиска";
+            this.сохранитьРезультатПоискаToolStripMenuItem.Text = "Сохранить отчет";
             // 
             // toolStripSeparator4
             // 
@@ -758,7 +769,7 @@
             // toolStripValue
             // 
             this.toolStripValue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox2,
+            this.toolStripTextBoxValue,
             this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripSeparator6});
@@ -768,11 +779,11 @@
             this.toolStripValue.TabIndex = 1;
             this.toolStripValue.Text = "toolStrip3";
             // 
-            // toolStripTextBox2
+            // toolStripTextBoxValue
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(200, 25);
+            this.toolStripTextBoxValue.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxValue.Name = "toolStripTextBoxValue";
+            this.toolStripTextBoxValue.Size = new System.Drawing.Size(200, 25);
             // 
             // toolStripButton6
             // 
@@ -799,6 +810,7 @@
             // 
             // listBoxValues
             // 
+            this.listBoxValues.BackColor = System.Drawing.Color.White;
             this.listBoxValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValues.FormattingEnabled = true;
@@ -810,18 +822,21 @@
             // 
             // richTextBoxReport
             // 
+            this.richTextBoxReport.BackColor = System.Drawing.Color.White;
             this.richTextBoxReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxReport.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxReport.Location = new System.Drawing.Point(0, 25);
             this.richTextBoxReport.Name = "richTextBoxReport";
-            this.richTextBoxReport.Size = new System.Drawing.Size(968, 164);
+            this.richTextBoxReport.Size = new System.Drawing.Size(968, 139);
             this.richTextBoxReport.TabIndex = 5;
             this.richTextBoxReport.Text = "";
+            this.richTextBoxReport.WordWrap = false;
             // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.richTextBoxReport);
+            this.panel5.Controls.Add(this.toolStrip2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 23);
             this.panel5.Name = "panel5";
@@ -901,7 +916,7 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.listBoxValuesXPath);
             this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.toolStripValueXPath);
+            this.panel9.Controls.Add(this.toolStripXPath);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 24);
             this.panel9.Name = "panel9";
@@ -920,25 +935,25 @@
             this.panel10.Size = new System.Drawing.Size(312, 299);
             this.panel10.TabIndex = 9;
             // 
-            // toolStripValueXPath
+            // toolStripXPath
             // 
-            this.toolStripValueXPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox3,
+            this.toolStripXPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBoxValueXPath,
             this.toolStripButton8,
             this.toolStripButton9,
             this.toolStripSeparator7,
             this.toolStripDropDownButton1});
-            this.toolStripValueXPath.Location = new System.Drawing.Point(0, 0);
-            this.toolStripValueXPath.Name = "toolStripValueXPath";
-            this.toolStripValueXPath.Size = new System.Drawing.Size(310, 25);
-            this.toolStripValueXPath.TabIndex = 1;
-            this.toolStripValueXPath.Text = "toolStrip2";
+            this.toolStripXPath.Location = new System.Drawing.Point(0, 0);
+            this.toolStripXPath.Name = "toolStripXPath";
+            this.toolStripXPath.Size = new System.Drawing.Size(310, 25);
+            this.toolStripXPath.TabIndex = 1;
+            this.toolStripXPath.Text = "toolStrip2";
             // 
-            // toolStripTextBox3
+            // toolStripTextBoxValueXPath
             // 
-            this.toolStripTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox3.Name = "toolStripTextBox3";
-            this.toolStripTextBox3.Size = new System.Drawing.Size(200, 25);
+            this.toolStripTextBoxValueXPath.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxValueXPath.Name = "toolStripTextBoxValueXPath";
+            this.toolStripTextBoxValueXPath.Size = new System.Drawing.Size(200, 25);
             // 
             // toolStripButton8
             // 
@@ -1041,7 +1056,7 @@
             // toolStripValueCSS
             // 
             this.toolStripValueCSS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox4,
+            this.toolStripTextBoxValueCSS,
             this.toolStripButton10,
             this.toolStripButton11,
             this.toolStripSeparator8,
@@ -1052,11 +1067,11 @@
             this.toolStripValueCSS.TabIndex = 2;
             this.toolStripValueCSS.Text = "toolStrip4";
             // 
-            // toolStripTextBox4
+            // toolStripTextBoxValueCSS
             // 
-            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(200, 25);
+            this.toolStripTextBoxValueCSS.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxValueCSS.Name = "toolStripTextBoxValueCSS";
+            this.toolStripTextBoxValueCSS.Size = new System.Drawing.Size(200, 25);
             // 
             // toolStripButton10
             // 
@@ -1158,6 +1173,7 @@
             // 
             // listBoxValuesXPath
             // 
+            this.listBoxValuesXPath.BackColor = System.Drawing.Color.White;
             this.listBoxValuesXPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxValuesXPath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesXPath.FormattingEnabled = true;
@@ -1169,6 +1185,7 @@
             // 
             // listBoxValuesCSS
             // 
+            this.listBoxValuesCSS.BackColor = System.Drawing.Color.White;
             this.listBoxValuesCSS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxValuesCSS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesCSS.FormattingEnabled = true;
@@ -1258,6 +1275,7 @@
             // 
             // richTextBoxValueFound
             // 
+            this.richTextBoxValueFound.BackColor = System.Drawing.Color.White;
             this.richTextBoxValueFound.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxValueFound.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxValueFound.Location = new System.Drawing.Point(0, 0);
@@ -1265,6 +1283,7 @@
             this.richTextBoxValueFound.Size = new System.Drawing.Size(968, 164);
             this.richTextBoxValueFound.TabIndex = 5;
             this.richTextBoxValueFound.Text = "";
+            this.richTextBoxValueFound.WordWrap = false;
             // 
             // panel14
             // 
@@ -1278,6 +1297,7 @@
             // 
             // richTextBoxValueNotFound
             // 
+            this.richTextBoxValueNotFound.BackColor = System.Drawing.Color.White;
             this.richTextBoxValueNotFound.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxValueNotFound.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxValueNotFound.Location = new System.Drawing.Point(0, 0);
@@ -1285,6 +1305,7 @@
             this.richTextBoxValueNotFound.Size = new System.Drawing.Size(968, 164);
             this.richTextBoxValueNotFound.TabIndex = 5;
             this.richTextBoxValueNotFound.Text = "";
+            this.richTextBoxValueNotFound.WordWrap = false;
             // 
             // textBoxUserAgent
             // 
@@ -1310,6 +1331,62 @@
             this.checkBoxUserAgent.Text = "Включен User-Agent по умолчанию";
             this.checkBoxUserAgent.UseVisualStyleBackColor = true;
             this.checkBoxUserAgent.CheckedChanged += new System.EventHandler(this.checkBoxUserAgent_CheckedChanged);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBoxFind,
+            this.toolStripButton12,
+            this.toolStripSeparator9,
+            this.toolStripButton13});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(968, 25);
+            this.toolStrip2.TabIndex = 6;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripComboBoxFind
+            // 
+            this.toolStripComboBoxFind.Name = "toolStripComboBoxFind";
+            this.toolStripComboBoxFind.Size = new System.Drawing.Size(250, 25);
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton12.Image")));
+            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton12.Text = "Поиск в списке результатов";
+            this.toolStripButton12.ToolTipText = "Поиск";
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
+            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton13.Text = "Сохранить отчет";
+            // 
+            // списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem
+            // 
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Image")));
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem";
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения были найдены";
+            // 
+            // списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem
+            // 
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Image")));
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem";
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения не были найдены";
             // 
             // Form1
             // 
@@ -1360,20 +1437,23 @@
             this.toolStripValue.ResumeLayout(false);
             this.toolStripValue.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.toolStripValueXPath.ResumeLayout(false);
-            this.toolStripValueXPath.PerformLayout();
+            this.toolStripXPath.ResumeLayout(false);
+            this.toolStripXPath.PerformLayout();
             this.toolStripValueCSS.ResumeLayout(false);
             this.toolStripValueCSS.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1440,7 +1520,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStrip toolStripValue;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxValue;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
@@ -1455,8 +1535,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.ToolStrip toolStripValueXPath;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
+        private System.Windows.Forms.ToolStrip toolStripXPath;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxValueXPath;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
@@ -1472,7 +1552,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStrip toolStripValueCSS;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxValueCSS;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton11;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
@@ -1499,6 +1579,13 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxUserAgent;
         private System.Windows.Forms.CheckBox checkBoxUserAgent;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxFind;
+        private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButton13;
+        private System.Windows.Forms.ToolStripMenuItem списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem;
     }
 }
 
