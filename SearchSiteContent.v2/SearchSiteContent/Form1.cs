@@ -32,14 +32,23 @@ namespace SearchSiteContent
             {
                 toolStripTextBoxPath.Text = openFileDialog1.FileName;
                 loadSitemap(toolStripTextBoxPath.Text);
-                //loadSitemap("https://mgts.ru/sitemap.xml");
             }
         }
 
         private void loadSitemapUrl()
         {
             // https://somovstudio.github.io/sitemap.xml
+            FormInputBox inputBox = new FormInputBox();
+            inputBox.FormClosed += InputBox_FormClosed;
+            inputBox.Parent = this;
+            inputBox.ShowDialog();
             
+        }
+
+        private void InputBox_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (toolStripTextBoxPath.Text != "") loadSitemap(toolStripTextBoxPath.Text);
+            else MessageBox.Show("Вы не ввели URL ссылку к карте сайта.", "Сообщение");
         }
 
         /*
@@ -185,6 +194,16 @@ namespace SearchSiteContent
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             openSitemapFile();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            loadSitemapUrl();
+        }
+
+        private void загрузитьСсылкиИзSitemapПоURLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadSitemapUrl();
         }
     }
 }

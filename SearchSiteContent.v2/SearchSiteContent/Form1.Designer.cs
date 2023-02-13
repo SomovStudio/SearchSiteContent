@@ -319,6 +319,7 @@
             this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem.Name = "загрузитьСсылкиИзSitemapПоURLToolStripMenuItem";
             this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
             this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem.Text = "Загрузить ссылки из sitemap по URL";
+            this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСсылкиИзSitemapПоURLToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -396,6 +397,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "Загрузить ссылки из sitemap по URL";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -1486,7 +1488,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem запуститьПродвинутыйПоискToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxPath;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1588,6 +1589,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton13;
         private System.Windows.Forms.ToolStripMenuItem списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem;
+        public System.Windows.Forms.ToolStripTextBox toolStripTextBoxPath;
     }
 }
 
