@@ -17,7 +17,12 @@ namespace SearchSiteContent
         public const string BY_XPATH = "BY_XPATH";
 
         public string UserAgent = "";
+        public TextBox Links;
         public RichTextBox Report;
+        public RichTextBox ReportFound;
+        public RichTextBox ReportNotFound;
+        public ListBox ValuesXPath;
+        public ListBox ValuesCSS;
 
         private bool statusPageLoadCompleted = false; // false - не загружена, true - загрузка завершена
 
@@ -56,6 +61,34 @@ namespace SearchSiteContent
             return true;
         }
         */
+
+        public async void StartSearch()
+        {
+            foreach (string link in Links.Lines)
+            {
+                if (ValuesXPath.Items.Count > 0)
+                {
+                    OpenPage(link);
+
+                    foreach (string searchValue in ValuesXPath.Items)
+                    {
+                        if (searchValue == "") continue;
+                        if (await SearchContentAsync(FormBrowser.BY_XPATH, searchValue) == true)
+                        {
+                            //addReport("Найдено значение [" + searchValue + "] на странице [" + target + "]");
+                            //addValueFound("Значение [" + searchValue + "]: " + target + " - найдено");
+                            Report.Text = "Найдено значение [" + searchValue + "] на странице [" + link + "]" + Environment.NewLine + Report.Text;
+                        }
+                        else
+                        {
+                            //addReport("Не найдено значение [" + searchValue + "] на странице [" + target + "]");
+                            //addValueNotFound("Значение [" + searchValue + "]: " + target + " - не найдено");
+                            Report.Text = "Не найдено значение [" + searchValue + "] на странице [" + link + "]" + Environment.NewLine + Report.Text;
+                        }
+                    }
+                }
+            }
+        }
 
         public void OpenPage(string url)
         {
@@ -108,7 +141,7 @@ namespace SearchSiteContent
 
         private void webView2_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
-
+            statusPageLoadCompleted = true;
         }
     }
 }

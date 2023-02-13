@@ -336,6 +336,18 @@ namespace SearchSiteContent
 
         private async Task runSmartSearchAsync()
         {
+            FormBrowser browser = new FormBrowser();
+            if (checkBoxUserAgent.Checked == false) browser.UserAgent = textBoxUserAgent.Text;
+            browser.Links = textBoxLinks;
+            browser.Report = richTextBoxReport;
+            browser.ReportFound = richTextBoxValueFound;
+            browser.ReportNotFound = richTextBoxValueNotFound;
+            browser.ValuesXPath = listBoxValuesXPath;
+            browser.ValuesCSS = listBoxValuesCSS;
+            browser.Show();
+            browser.StartSearch();
+
+            /*
             try
             {
                 string page = "";
@@ -407,6 +419,7 @@ namespace SearchSiteContent
                 thread.Abort();
             }
             thread.Abort();
+            */
         }
 
         /*
