@@ -223,6 +223,26 @@ namespace SearchSiteContent
             thread.Start();
         }
 
+        private void startSmartSearch()
+        {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Процесс поиска уже запущен");
+                return;
+            }
+
+            richTextBoxReport.Clear();
+            richTextBoxValueFound.Clear();
+            richTextBoxValueNotFound.Clear();
+            toolStripProgressBar1.Maximum = 0;
+            toolStripProgressBar1.Value = 0;
+            toolStripStatusLabel3.Text = "...";
+            toolStripStatusLabel4.Text = "0%";
+            //thread = new Thread(runSmartSearchAsync);
+            //thread.Start();
+            runSmartSearchAsync();
+        }
+
         private bool searchContentOnPage(string page, string value)
         {
             return page.Contains(value);
@@ -302,6 +322,81 @@ namespace SearchSiteContent
                 }
                 toolStripStatusLabel4.Text = "100%";
                 MessageBox.Show("Поиск завершен!", "Сообщение");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка");
+            }
+            finally
+            {
+                thread.Abort();
+            }
+            thread.Abort();
+        }
+
+        private async Task runSmartSearchAsync()
+        {
+            try
+            {
+                string page = "";
+                int index = 0;
+                int totalPages = textBoxLinks.Lines.Length;
+                int onePercent = 0;
+
+                if (totalPages <= 0)
+                {
+                    MessageBox.Show("Отсутствуют ссылки для выполнения поиска", "Сообщения");
+                    thread.Abort();
+                    return;
+                }
+
+                toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
+                toolStripProgressBar1.Maximum = totalPages;
+                int percent = 0;
+
+                FormBrowser browser = new FormBrowser();
+                browser.Report = richTextBoxReport;
+                if (checkBoxUserAgent.Checked == false) browser.UserAgent = textBoxUserAgent.Text;
+                browser.Show();
+
+                foreach (string target in textBoxLinks.Lines)
+                {
+                    index++;
+                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
+                    toolStripProgressBar1.Value = index;
+
+                    percent = (int)(((double)toolStripProgressBar1.Value / (double)toolStripProgressBar1.Maximum) * 100);
+                    toolStripStatusLabel4.Text = Convert.ToString(percent) + "%";
+
+                    try
+                    {
+                        browser.OpenPage(target);
+
+                        if (listBoxValues.Items.Count > 0)
+                        {
+                            foreach (string searchValue in listBoxValuesXPath.Items)
+                            {
+                                if (searchValue == "") continue;
+                                if (await browser.SearchContentAsync(FormBrowser.BY_XPATH, searchValue) == true)
+                                {
+                                    addReport("Найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    addValueFound("Значение [" + searchValue + "]: " + target + " - найдено");
+                                }
+                                else
+                                {
+                                    addReport("Не найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    addValueNotFound("Значение [" + searchValue + "]: " + target + " - не найдено");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        addReport("Ошибка \"" + ex.Message + "\" | Страница: " + target);
+                    }
+                }
+                toolStripStatusLabel4.Text = "100%";
+                MessageBox.Show("Продвинутый поиск завершен!", "Сообщение");
             }
             catch (Exception error)
             {
@@ -474,12 +569,12 @@ namespace SearchSiteContent
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-
+            startSmartSearch();
         }
 
         private void запуститьПродвинутыйПоискToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            startSmartSearch();
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
