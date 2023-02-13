@@ -53,7 +53,7 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.запуститьПродвинутыйПоискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBoxPath = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -75,7 +75,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxLinks = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -88,13 +88,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripValue = new System.Windows.Forms.ToolStrip();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.listBoxValues = new System.Windows.Forms.ListBox();
+            this.richTextBoxReport = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripValueXPath = new System.Windows.Forms.ToolStrip();
             this.toolStripTextBox3 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
@@ -119,7 +119,7 @@
             this.ididnameparentdivToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputididnamefollowingsiblinginput4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label11 = new System.Windows.Forms.Label();
-            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.toolStripValueCSS = new System.Windows.Forms.ToolStrip();
             this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
@@ -134,8 +134,8 @@
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.label12 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBoxValuesXPath = new System.Windows.Forms.ListBox();
+            this.listBoxValuesCSS = new System.Windows.Forms.ListBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -143,9 +143,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxValueFound = new System.Windows.Forms.RichTextBox();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxValueNotFound = new System.Windows.Forms.RichTextBox();
+            this.textBoxUserAgent = new System.Windows.Forms.TextBox();
+            this.checkBoxUserAgent = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -155,6 +157,7 @@
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -172,14 +175,14 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.toolStrip3.SuspendLayout();
+            this.toolStripValue.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
-            this.toolStrip4.SuspendLayout();
+            this.toolStripValueXPath.SuspendLayout();
+            this.toolStripValueCSS.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -309,7 +312,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripTextBox1,
+            this.toolStripTextBoxPath,
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripSeparator1,
@@ -365,13 +368,13 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(43, 22);
             this.toolStripLabel1.Text = "Адрес:";
             // 
-            // toolStripTextBox1
+            // toolStripTextBoxPath
             // 
-            this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.ReadOnly = true;
-            this.toolStripTextBox1.Size = new System.Drawing.Size(450, 23);
+            this.toolStripTextBoxPath.AutoSize = false;
+            this.toolStripTextBoxPath.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxPath.Name = "toolStripTextBoxPath";
+            this.toolStripTextBoxPath.ReadOnly = true;
+            this.toolStripTextBoxPath.Size = new System.Drawing.Size(450, 23);
             // 
             // toolStripButton1
             // 
@@ -467,6 +470,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBoxUserAgent);
+            this.tabPage2.Controls.Add(this.checkBoxUserAgent);
             this.tabPage2.ImageIndex = 0;
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
@@ -601,18 +606,18 @@
             this.label8.Text = "Список ссылок:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // textBoxLinks
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(619, 311);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.WordWrap = false;
+            this.textBoxLinks.BackColor = System.Drawing.Color.White;
+            this.textBoxLinks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLinks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLinks.Location = new System.Drawing.Point(0, 0);
+            this.textBoxLinks.Multiline = true;
+            this.textBoxLinks.Name = "textBoxLinks";
+            this.textBoxLinks.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxLinks.Size = new System.Drawing.Size(619, 311);
+            this.textBoxLinks.TabIndex = 5;
+            this.textBoxLinks.WordWrap = false;
             // 
             // panel1
             // 
@@ -735,8 +740,8 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.listBox1);
-            this.panel2.Controls.Add(this.toolStrip3);
+            this.panel2.Controls.Add(this.listBoxValues);
+            this.panel2.Controls.Add(this.toolStripValue);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 24);
             this.panel2.Name = "panel2";
@@ -746,25 +751,25 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.textBoxLinks);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 21);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(621, 313);
             this.panel3.TabIndex = 6;
             // 
-            // toolStrip3
+            // toolStripValue
             // 
-            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripValue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox2,
             this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripSeparator6});
-            this.toolStrip3.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(310, 25);
-            this.toolStrip3.TabIndex = 1;
-            this.toolStrip3.Text = "toolStrip3";
+            this.toolStripValue.Location = new System.Drawing.Point(0, 0);
+            this.toolStripValue.Name = "toolStripValue";
+            this.toolStripValue.Size = new System.Drawing.Size(310, 25);
+            this.toolStripValue.TabIndex = 1;
+            this.toolStripValue.Text = "toolStrip3";
             // 
             // toolStripTextBox2
             // 
@@ -795,31 +800,31 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
-            // listBox1
+            // listBoxValues
             // 
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(310, 272);
-            this.listBox1.TabIndex = 2;
+            this.listBoxValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValues.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxValues.FormattingEnabled = true;
+            this.listBoxValues.HorizontalScrollbar = true;
+            this.listBoxValues.Location = new System.Drawing.Point(0, 25);
+            this.listBoxValues.Name = "listBoxValues";
+            this.listBoxValues.Size = new System.Drawing.Size(310, 272);
+            this.listBoxValues.TabIndex = 2;
             // 
-            // richTextBox1
+            // richTextBoxReport
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(968, 164);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
+            this.richTextBoxReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxReport.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxReport.Name = "richTextBoxReport";
+            this.richTextBoxReport.Size = new System.Drawing.Size(968, 164);
+            this.richTextBoxReport.TabIndex = 5;
+            this.richTextBoxReport.Text = "";
             // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.richTextBox1);
+            this.panel5.Controls.Add(this.richTextBoxReport);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 23);
             this.panel5.Name = "panel5";
@@ -897,9 +902,9 @@
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.listBox2);
+            this.panel9.Controls.Add(this.listBoxValuesXPath);
             this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.toolStrip2);
+            this.panel9.Controls.Add(this.toolStripValueXPath);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 24);
             this.panel9.Name = "panel9";
@@ -909,28 +914,28 @@
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.listBox3);
+            this.panel10.Controls.Add(this.listBoxValuesCSS);
             this.panel10.Controls.Add(this.label12);
-            this.panel10.Controls.Add(this.toolStrip4);
+            this.panel10.Controls.Add(this.toolStripValueCSS);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(3, 24);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(312, 299);
             this.panel10.TabIndex = 9;
             // 
-            // toolStrip2
+            // toolStripValueXPath
             // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripValueXPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox3,
             this.toolStripButton8,
             this.toolStripButton9,
             this.toolStripSeparator7,
             this.toolStripDropDownButton1});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(310, 25);
-            this.toolStrip2.TabIndex = 1;
-            this.toolStrip2.Text = "toolStrip2";
+            this.toolStripValueXPath.Location = new System.Drawing.Point(0, 0);
+            this.toolStripValueXPath.Name = "toolStripValueXPath";
+            this.toolStripValueXPath.Size = new System.Drawing.Size(310, 25);
+            this.toolStripValueXPath.TabIndex = 1;
+            this.toolStripValueXPath.Text = "toolStrip2";
             // 
             // toolStripTextBox3
             // 
@@ -1036,19 +1041,19 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "Внимание: значения XPath применяются только в продвинутом поиске.";
             // 
-            // toolStrip4
+            // toolStripValueCSS
             // 
-            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripValueCSS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox4,
             this.toolStripButton10,
             this.toolStripButton11,
             this.toolStripSeparator8,
             this.toolStripDropDownButton2});
-            this.toolStrip4.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(310, 25);
-            this.toolStrip4.TabIndex = 2;
-            this.toolStrip4.Text = "toolStrip4";
+            this.toolStripValueCSS.Location = new System.Drawing.Point(0, 0);
+            this.toolStripValueCSS.Name = "toolStripValueCSS";
+            this.toolStripValueCSS.Size = new System.Drawing.Size(310, 25);
+            this.toolStripValueCSS.TabIndex = 2;
+            this.toolStripValueCSS.Text = "toolStrip4";
             // 
             // toolStripTextBox4
             // 
@@ -1154,27 +1159,27 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Внимание: значения CSS применяются только в продвинутом поиске.";
             // 
-            // listBox2
+            // listBoxValuesXPath
             // 
-            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.HorizontalScrollbar = true;
-            this.listBox2.Location = new System.Drawing.Point(0, 25);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(310, 241);
-            this.listBox2.TabIndex = 3;
+            this.listBoxValuesXPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesXPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxValuesXPath.FormattingEnabled = true;
+            this.listBoxValuesXPath.HorizontalScrollbar = true;
+            this.listBoxValuesXPath.Location = new System.Drawing.Point(0, 25);
+            this.listBoxValuesXPath.Name = "listBoxValuesXPath";
+            this.listBoxValuesXPath.Size = new System.Drawing.Size(310, 241);
+            this.listBoxValuesXPath.TabIndex = 3;
             // 
-            // listBox3
+            // listBoxValuesCSS
             // 
-            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.HorizontalScrollbar = true;
-            this.listBox3.Location = new System.Drawing.Point(0, 25);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(310, 241);
-            this.listBox3.TabIndex = 4;
+            this.listBoxValuesCSS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesCSS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxValuesCSS.FormattingEnabled = true;
+            this.listBoxValuesCSS.HorizontalScrollbar = true;
+            this.listBoxValuesCSS.Location = new System.Drawing.Point(0, 25);
+            this.listBoxValuesCSS.Name = "listBoxValuesCSS";
+            this.listBoxValuesCSS.Size = new System.Drawing.Size(310, 241);
+            this.listBoxValuesCSS.TabIndex = 4;
             // 
             // panel11
             // 
@@ -1196,9 +1201,9 @@
             this.label13.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.label13.Location = new System.Drawing.Point(0, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(150, 18);
+            this.label13.Size = new System.Drawing.Size(175, 18);
             this.label13.TabIndex = 0;
-            this.label13.Text = "    Отчет:";
+            this.label13.Text = "    Значение найдено:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
@@ -1230,9 +1235,9 @@
             this.label15.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.label15.Location = new System.Drawing.Point(0, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(150, 18);
+            this.label15.Size = new System.Drawing.Size(175, 18);
             this.label15.TabIndex = 0;
-            this.label15.Text = "    Отчет:";
+            this.label15.Text = "    Значение не найдено:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label16
@@ -1247,42 +1252,67 @@
             // panel13
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.richTextBox2);
+            this.panel13.Controls.Add(this.richTextBoxValueFound);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(3, 23);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(970, 166);
             this.panel13.TabIndex = 7;
             // 
-            // richTextBox2
+            // richTextBoxValueFound
             // 
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(968, 164);
-            this.richTextBox2.TabIndex = 5;
-            this.richTextBox2.Text = "";
+            this.richTextBoxValueFound.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxValueFound.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxValueFound.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxValueFound.Name = "richTextBoxValueFound";
+            this.richTextBoxValueFound.Size = new System.Drawing.Size(968, 164);
+            this.richTextBoxValueFound.TabIndex = 5;
+            this.richTextBoxValueFound.Text = "";
             // 
             // panel14
             // 
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.richTextBox3);
+            this.panel14.Controls.Add(this.richTextBoxValueNotFound);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(3, 23);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(970, 166);
             this.panel14.TabIndex = 7;
             // 
-            // richTextBox3
+            // richTextBoxValueNotFound
             // 
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox3.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(968, 164);
-            this.richTextBox3.TabIndex = 5;
-            this.richTextBox3.Text = "";
+            this.richTextBoxValueNotFound.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxValueNotFound.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxValueNotFound.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxValueNotFound.Name = "richTextBoxValueNotFound";
+            this.richTextBoxValueNotFound.Size = new System.Drawing.Size(968, 164);
+            this.richTextBoxValueNotFound.TabIndex = 5;
+            this.richTextBoxValueNotFound.Text = "";
+            // 
+            // textBoxUserAgent
+            // 
+            this.textBoxUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUserAgent.Enabled = false;
+            this.textBoxUserAgent.Location = new System.Drawing.Point(214, 23);
+            this.textBoxUserAgent.Name = "textBoxUserAgent";
+            this.textBoxUserAgent.Size = new System.Drawing.Size(754, 20);
+            this.textBoxUserAgent.TabIndex = 16;
+            this.textBoxUserAgent.Text = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.83" +
+    "5.202 Safari/535.1";
+            // 
+            // checkBoxUserAgent
+            // 
+            this.checkBoxUserAgent.AutoSize = true;
+            this.checkBoxUserAgent.Checked = true;
+            this.checkBoxUserAgent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUserAgent.Location = new System.Drawing.Point(8, 25);
+            this.checkBoxUserAgent.Name = "checkBoxUserAgent";
+            this.checkBoxUserAgent.Size = new System.Drawing.Size(200, 17);
+            this.checkBoxUserAgent.TabIndex = 15;
+            this.checkBoxUserAgent.Text = "Включен User-Agent по умолчанию";
+            this.checkBoxUserAgent.UseVisualStyleBackColor = true;
+            this.checkBoxUserAgent.CheckedChanged += new System.EventHandler(this.checkBoxUserAgent_CheckedChanged);
             // 
             // Form1
             // 
@@ -1309,6 +1339,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -1328,8 +1360,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.toolStrip3.ResumeLayout(false);
-            this.toolStrip3.PerformLayout();
+            this.toolStripValue.ResumeLayout(false);
+            this.toolStripValue.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -1337,10 +1369,10 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            this.toolStrip4.ResumeLayout(false);
-            this.toolStrip4.PerformLayout();
+            this.toolStripValueXPath.ResumeLayout(false);
+            this.toolStripValueXPath.PerformLayout();
+            this.toolStripValueCSS.ResumeLayout(false);
+            this.toolStripValueCSS.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
@@ -1375,7 +1407,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem запуститьПродвинутыйПоискToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxPath;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1397,7 +1429,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxLinks;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -1410,14 +1442,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStrip toolStripValue;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxValues;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxReport;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1426,7 +1458,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStrip toolStripValueXPath;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox3;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
@@ -1442,7 +1474,7 @@
         private System.Windows.Forms.ToolStripMenuItem inputididnamefollowingsiblinginput4ToolStripMenuItem;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ToolStrip toolStrip4;
+        private System.Windows.Forms.ToolStrip toolStripValueCSS;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton11;
@@ -1456,18 +1488,20 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBoxValuesXPath;
+        private System.Windows.Forms.ListBox listBoxValuesCSS;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBoxValueFound;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxUserAgent;
+        private System.Windows.Forms.CheckBox checkBoxUserAgent;
     }
 }
 
