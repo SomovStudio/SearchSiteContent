@@ -320,6 +320,7 @@
             this.запуститьПоискToolStripMenuItem.Name = "запуститьПоискToolStripMenuItem";
             this.запуститьПоискToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.запуститьПоискToolStripMenuItem.Text = "Запустить быстрый поиск";
+            this.запуститьПоискToolStripMenuItem.Click += new System.EventHandler(this.запуститьПоискToolStripMenuItem_Click);
             // 
             // остановитьПоискToolStripMenuItem
             // 
@@ -385,7 +386,7 @@
             this.toolStripTextBoxPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxPath.Name = "toolStripTextBoxPath";
             this.toolStripTextBoxPath.ReadOnly = true;
-            this.toolStripTextBoxPath.Size = new System.Drawing.Size(450, 23);
+            this.toolStripTextBoxPath.Size = new System.Drawing.Size(350, 23);
             // 
             // toolStripButton1
             // 
@@ -419,6 +420,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(113, 22);
             this.toolStripButton3.Text = "Быстрый поиск";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
             // 
@@ -427,6 +429,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(127, 22);
             this.toolStripButton4.Text = "Остановить поиск";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripSeparator2
             // 
@@ -605,6 +608,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage6.Controls.Add(this.panel2);
             this.tabPage6.Controls.Add(this.panel4);
             this.tabPage6.Location = new System.Drawing.Point(4, 4);
@@ -613,7 +617,6 @@
             this.tabPage6.Size = new System.Drawing.Size(318, 326);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Простые значения";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -720,6 +723,7 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage7.Controls.Add(this.panel9);
             this.tabPage7.Controls.Add(this.panel6);
             this.tabPage7.Location = new System.Drawing.Point(4, 4);
@@ -728,7 +732,6 @@
             this.tabPage7.Size = new System.Drawing.Size(318, 326);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Значения XPath";
-            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
@@ -758,6 +761,7 @@
             // 
             // label11
             // 
+            this.label11.BackColor = System.Drawing.SystemColors.Control;
             this.label11.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label11.Location = new System.Drawing.Point(0, 266);
             this.label11.Name = "label11";
@@ -921,6 +925,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage8.Controls.Add(this.panel10);
             this.tabPage8.Controls.Add(this.panel8);
             this.tabPage8.Location = new System.Drawing.Point(4, 4);
@@ -929,7 +934,6 @@
             this.tabPage8.Size = new System.Drawing.Size(318, 326);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Знаяения CSS";
-            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
@@ -959,6 +963,7 @@
             // 
             // label12
             // 
+            this.label12.BackColor = System.Drawing.SystemColors.Control;
             this.label12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label12.Location = new System.Drawing.Point(0, 266);
             this.label12.Name = "label12";
@@ -1223,6 +1228,7 @@
             this.richTextBoxReport.TabIndex = 5;
             this.richTextBoxReport.Text = "";
             this.richTextBoxReport.WordWrap = false;
+            this.richTextBoxReport.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox_LinkClicked);
             // 
             // toolStrip2
             // 
@@ -1335,6 +1341,7 @@
             this.richTextBoxValueFound.TabIndex = 5;
             this.richTextBoxValueFound.Text = "";
             this.richTextBoxValueFound.WordWrap = false;
+            this.richTextBoxValueFound.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox_LinkClicked);
             // 
             // panel11
             // 
@@ -1405,6 +1412,7 @@
             this.richTextBoxValueNotFound.TabIndex = 5;
             this.richTextBoxValueNotFound.Text = "";
             this.richTextBoxValueNotFound.WordWrap = false;
+            this.richTextBoxValueNotFound.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox_LinkClicked);
             // 
             // panel12
             // 

@@ -185,9 +185,138 @@ namespace SearchSiteContent
             panelMessageLoadLinks.Visible = false;
         }
 
-        
-        
+        private void stop()
+        {
+            if (thread.ThreadState.ToString() == "Unstarted")
+            {
+                MessageBox.Show("Процесс поиска еще не запущен");
+                return;
+            }
 
+            try
+            {
+                thread.Abort();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка");
+            }
+            MessageBox.Show("Процесс прерван пользователем!");
+        }
+
+        private void startFastSearch()
+        {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Процесс поиска уже запущен");
+                return;
+            }
+
+            richTextBoxReport.Clear();
+            richTextBoxValueFound.Clear();
+            richTextBoxValueNotFound.Clear();
+            toolStripProgressBar1.Maximum = 0;
+            toolStripProgressBar1.Value = 0;
+            toolStripStatusLabel3.Text = "...";
+            toolStripStatusLabel4.Text = "0%";
+            thread = new Thread(runFastSearch);
+            thread.Start();
+        }
+
+        private bool searchContentOnPage(string page, string value)
+        {
+            return page.Contains(value);
+        }
+
+        private void addReport(string message)
+        {
+            richTextBoxReport.Text = message + Environment.NewLine + richTextBoxReport.Text;
+        }
+
+        private void addValueFound(string message)
+        {
+            richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
+        }
+
+        private void addValueNotFound(string message)
+        {
+            richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
+        }
+
+        private void runFastSearch()
+        {
+            try
+            {
+                /* Выполняю поиск по всем собранным url */
+                string page = "";
+                int index = 0;
+                int totalPages = textBoxLinks.Lines.Length;
+                int onePercent = 0;
+
+                if (totalPages <= 0)
+                {
+                    MessageBox.Show("Отсутствуют ссылки для выполнения поиска", "Сообщения");
+                    thread.Abort();
+                    return;
+                }
+
+                toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
+                toolStripProgressBar1.Maximum = totalPages;
+                int percent = 0;
+
+                foreach (string target in textBoxLinks.Lines)
+                {
+                    index++;
+                    toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
+                    toolStripProgressBar1.Value = index;
+
+                    percent = (int)(((double)toolStripProgressBar1.Value / (double)toolStripProgressBar1.Maximum) * 100);
+                    toolStripStatusLabel4.Text = Convert.ToString(percent) + "%";
+
+                    try
+                    {
+                        string pagetarget = getPageHtmlDOM(target);
+
+                        if (listBoxValues.Items.Count > 0)
+                        {
+                            foreach (string searchValue in listBoxValues.Items)
+                            {
+                                if (searchValue == "") continue;
+                                if (searchContentOnPage(pagetarget, searchValue) == true)
+                                {
+                                    addReport("Найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    addValueFound("Значение [" + searchValue + "]: " + target + " - найдено");
+                                }
+                                else
+                                {
+                                    addReport("Не найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    addValueNotFound("Значение [" + searchValue + "]: " + target + " - не найдено");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        addReport("Ошибка \"" + ex.Message + "\" | Страница: " + target);
+                    }
+                }
+                toolStripStatusLabel4.Text = "100%";
+                MessageBox.Show("Поиск завершен!", "Сообщение");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка");
+            }
+            finally
+            {
+                thread.Abort();
+            }
+            thread.Abort();
+        }
+
+        /*
+         * == Events ============================================
+         */
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -311,5 +440,31 @@ namespace SearchSiteContent
             toolStripTextBoxValueCSS.Text = ((ToolStripMenuItem)sender).Text;
         }
 
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            startFastSearch();
+        }
+
+        private void запуститьПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startFastSearch();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            stop();
+        }
+
+        private void richTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(e.LinkText);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
     }
 }
