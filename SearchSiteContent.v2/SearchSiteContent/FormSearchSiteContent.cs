@@ -23,32 +23,54 @@ namespace SearchSiteContent
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            thread = new Thread(loadSitemap);
         }
 
         private void openSitemapFile()
         {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Загрузка ссылок в процессе, пожалуйста подождите.", "Сообщение");
+                return;
+            }
+
             openFileDialog1.FileName = "";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 toolStripTextBoxPath.Text = openFileDialog1.FileName;
-                loadSitemap(toolStripTextBoxPath.Text);
+                thread = new Thread(loadSitemap);
+                thread.Start();
+                panelMessageLoadLinks.Visible = true;
             }
         }
 
         private void loadSitemapUrl()
         {
+            if (thread.ThreadState.ToString() == "Running")
+            {
+                MessageBox.Show("Загрузка ссылок в процессе, пожалуйста подождите.", "Сообщение");
+                return;
+            }
+
             // https://somovstudio.github.io/sitemap.xml
             FormInputBox inputBox = new FormInputBox();
             inputBox.FormClosed += InputBox_FormClosed;
             inputBox.Parent = this;
             inputBox.ShowDialog();
-            
         }
 
         private void InputBox_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (toolStripTextBoxPath.Text != "") loadSitemap(toolStripTextBoxPath.Text);
-            else MessageBox.Show("Вы не ввели URL ссылку к карте сайта.", "Сообщение");
+            if (toolStripTextBoxPath.Text != "")
+            {
+                thread = new Thread(loadSitemap);
+                thread.Start();
+                panelMessageLoadLinks.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Вы не ввели URL ссылку к карте сайта.", "Сообщение");
+            }
         }
 
         /*
@@ -126,15 +148,14 @@ namespace SearchSiteContent
             return html;
         }
 
-        private void loadSitemap(string sitemapPath)
+        private void loadSitemap()
         {
             try
             {
-                ArrayList targets = new ArrayList();
                 ArrayList sitemaps = new ArrayList();
 
                 /* собираю все sitemap */
-                sitemaps.Add(sitemapPath);
+                sitemaps.Add(toolStripTextBoxPath.Text);
                 for (int i = 0; i < sitemaps.Count; i++)
                 {
                     string xmlLink = sitemaps[i].ToString();
@@ -149,17 +170,19 @@ namespace SearchSiteContent
                             }
                             else
                             {
-                                targets.Add(urlSitemap);
                                 textBoxLinks.Text += urlSitemap + Environment.NewLine;
+                                textBoxLinks.Update();
                             }
                         }
                     }
                 }
+                MessageBox.Show("Загрузка ссылок завершена", "Сообщение");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+            panelMessageLoadLinks.Visible = false;
         }
 
         

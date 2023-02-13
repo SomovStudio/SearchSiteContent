@@ -160,6 +160,8 @@
             this.listLinthoftype4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listLinthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listnthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMessageLoadLinks = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -200,6 +202,7 @@
             this.tabPage5.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panelMessageLoadLinks.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -531,6 +534,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.panelMessageLoadLinks);
             this.panel3.Controls.Add(this.textBoxLinks);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 21);
@@ -1471,6 +1475,28 @@
             this.listnthchild4ToolStripMenuItem.Text = "#list *:nth-child(4)";
             this.listnthchild4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
             // 
+            // panelMessageLoadLinks
+            // 
+            this.panelMessageLoadLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMessageLoadLinks.BackColor = System.Drawing.SystemColors.Control;
+            this.panelMessageLoadLinks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMessageLoadLinks.Controls.Add(this.label17);
+            this.panelMessageLoadLinks.Location = new System.Drawing.Point(398, 7);
+            this.panelMessageLoadLinks.Name = "panelMessageLoadLinks";
+            this.panelMessageLoadLinks.Size = new System.Drawing.Size(200, 86);
+            this.panelMessageLoadLinks.TabIndex = 6;
+            this.panelMessageLoadLinks.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(3, 11);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(192, 55);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Идет загрузка ссылока, подождите пожалуйста...";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormSearchSiteContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1537,6 +1563,7 @@
             this.tabPage5.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.panelMessageLoadLinks.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1674,6 +1701,8 @@
         private System.Windows.Forms.ToolStripMenuItem listLinthoftype4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listLinthchild4ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listnthchild4ToolStripMenuItem;
+        private System.Windows.Forms.Panel panelMessageLoadLinks;
+        private System.Windows.Forms.Label label17;
     }
 }
 
