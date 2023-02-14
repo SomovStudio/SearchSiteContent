@@ -20,6 +20,11 @@ namespace SearchSiteContent
 
         public FormSearchSiteContent Parent;
         private int linkIndex = 0;
+        private string page = "";
+        private int index = 0;
+        private int totalPages = 0;
+        private int onePercent = 0;
+        private int percent = 0;
 
         public FormBrowser()
         {
@@ -60,7 +65,15 @@ namespace SearchSiteContent
         {
             try
             {
-                if (Parent.Browser == null) return; 
+                if (Parent.Browser == null) return;
+
+                index++;
+                Parent.toolStripStatusLabel3.Text = "Процесс: " + index.ToString() + "/" + totalPages.ToString();
+                Parent.toolStripProgressBar1.Value = index;
+
+                percent = (int)(((double)Parent.toolStripProgressBar1.Value / (double)Parent.toolStripProgressBar1.Maximum) * 100);
+                Parent.toolStripStatusLabel4.Text = Convert.ToString(percent) + "%";
+
 
                 message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Загрузка завершена |";
                 link.Text = webView2.Source.ToString();
@@ -128,6 +141,14 @@ namespace SearchSiteContent
                 linkIndex = 0;
                 if (Parent != null)
                 {
+                    page = "";
+                    index = 0;
+                    totalPages = Parent.textBoxLinks.Lines.Length;
+                    onePercent = 0;
+                    Parent.toolStripStatusLabel3.Text = "Процесс: 0/" + totalPages;
+                    Parent.toolStripProgressBar1.Maximum = totalPages;
+                    percent = 0;
+
                     if (Parent.textBoxLinks.Lines.Length > 0)
                     {
                         Parent.addReport("Запущен продвинутый поиск");
