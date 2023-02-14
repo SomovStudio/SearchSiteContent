@@ -349,6 +349,56 @@ namespace SearchSiteContent
             Browser.StartSearch();
         }
 
+        /* Поиск по тексту */
+        int _findIndex = 0;
+        int _findLast = 0;
+        String _findText = "";
+        private void findText(RichTextBox _richTextBox, ToolStripComboBox _cbox)
+        {
+            try
+            {
+                bool resolution = true;
+                for (int k = 0; k < _cbox.Items.Count; k++)
+                    if (_cbox.Items[k].ToString() == _cbox.Text) resolution = false;
+                if (resolution) _cbox.Items.Add(_cbox.Text);
+                if (_findText != _cbox.Text)
+                {
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+                if (_richTextBox.Find(_cbox.Text, _findIndex, _richTextBox.TextLength - 1, RichTextBoxFinds.None) >= 0)
+                {
+                    _richTextBox.Select();
+                    _findIndex = _richTextBox.SelectionStart + _richTextBox.SelectionLength;
+                    if (_findLast == _richTextBox.SelectionStart)
+                    {
+                        MessageBox.Show("Поиск в списке результатов - завершен", "Сообщение");
+                        _findIndex = 0;
+                        _findLast = 0;
+                        _findText = _cbox.Text;
+                    }
+                    else
+                    {
+                        _findLast = _richTextBox.SelectionStart;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поиск в списке результатов - завершен", "Сообщение");
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+
         /*
          * == Events ============================================
          */
@@ -521,6 +571,34 @@ namespace SearchSiteContent
         {
             FormAbout about = new FormAbout();
             about.ShowDialog();
+        }
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                findText(richTextBoxReport, toolStripComboBoxFind);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
     }
 }
