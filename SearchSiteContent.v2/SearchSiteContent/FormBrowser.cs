@@ -38,6 +38,7 @@ namespace SearchSiteContent
 
         private void FormBrowser_FormClosed(object sender, FormClosedEventArgs e)
         {
+            webView2.CoreWebView2.Stop();
             Parent.Browser = null;
         }
 
@@ -195,6 +196,17 @@ namespace SearchSiteContent
             return found;
         }
 
-        
+        private void остановитьЗагрузкуСтраницыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                webView2.CoreWebView2.Stop();
+                Parent.addReport("Остановлена загрузка страницы: " + link.Text);
+            }
+            catch (Exception ex)
+            {
+                Parent.addReport("Ошибка: " + ex.Message);
+            }
+        }
     }
 }
