@@ -51,10 +51,18 @@ namespace SearchSiteContent
             webView2.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
         }
 
+        private async void webView2_ContentLoading(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ContentLoadingEventArgs e)
+        {
+            
+        }
+
         private async void webView2_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             try
             {
+                if (Parent.Browser == null) return; 
+
+                message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Загрузка завершена |";
                 link.Text = webView2.Source.ToString();
 
                 if (Parent.listBoxValuesXPath.Items.Count > 0)
@@ -99,18 +107,17 @@ namespace SearchSiteContent
                 Parent.addReport("Ошибка: " + ex.Message + " | Страница: " + webView2.Source.ToString());
             }
 
-            await Task.Delay(1000);
             linkIndex++;
-            if (Parent.textBoxLinks.Lines.Length < linkIndex)
+            if ((Parent.textBoxLinks.Lines.Length - 1) < linkIndex)
             {
-                Parent.addReport("Следубщая страница");
-                webView2.CoreWebView2.Navigate(Parent.textBoxLinks.Lines[linkIndex]);
+                Parent.addReport("Поиск завершен");
+                this.Close();
             }
             else
             {
-                Parent.addReport(Parent.textBoxLinks.Lines.Length.ToString() + " < " + linkIndex.ToString());
-                Parent.addReport("Поиск завершен");
-                this.Close();
+                message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Идет загрузка, подождите... |";
+                link.Text = Parent.textBoxLinks.Lines[linkIndex];
+                webView2.CoreWebView2.Navigate(Parent.textBoxLinks.Lines[linkIndex]);
             }
         }
 
@@ -125,7 +132,6 @@ namespace SearchSiteContent
                     {
                         Parent.addReport("Запущен продвинутый поиск");
                         webView2.Source = new Uri(Parent.textBoxLinks.Lines[linkIndex]);
-                        linkIndex++;
                     }
                     else
                     {

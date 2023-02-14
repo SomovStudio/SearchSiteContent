@@ -188,9 +188,17 @@ namespace SearchSiteContent
 
         private void stop()
         {
+            if (Browser != null)
+            {
+                Browser.Close();
+                Browser = null;
+                MessageBox.Show("Процесс прерван пользователем!", "Сообщение");
+                return;
+            }
+            
             if (thread.ThreadState.ToString() == "Unstarted")
             {
-                MessageBox.Show("Процесс поиска еще не запущен");
+                MessageBox.Show("Процесс еще не запущен", "Сообщение");
                 return;
             }
 
@@ -202,14 +210,14 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(error.Message, "Ошибка");
             }
-            MessageBox.Show("Процесс прерван пользователем!");
+            MessageBox.Show("Процесс прерван пользователем!", "Сообщение");
         }
 
         private void startFastSearch()
         {
-            if (thread.ThreadState.ToString() == "Running")
+            if (thread.ThreadState.ToString() == "Running" || Browser != null)
             {
-                MessageBox.Show("Процесс поиска уже запущен");
+                MessageBox.Show("Процесс поиска уже запущен", "Сообщение");
                 return;
             }
 
@@ -226,9 +234,9 @@ namespace SearchSiteContent
 
         private void startSmartSearch()
         {
-            if (thread.ThreadState.ToString() == "Running")
+            if (thread.ThreadState.ToString() == "Running" || Browser != null)
             {
-                MessageBox.Show("Процесс поиска уже запущен");
+                MessageBox.Show("Процесс поиска уже запущен", "Сообщение");
                 return;
             }
 
@@ -347,7 +355,7 @@ namespace SearchSiteContent
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Browser = null;
         }
 
         private void checkBoxUserAgent_CheckedChanged(object sender, EventArgs e)
@@ -495,7 +503,7 @@ namespace SearchSiteContent
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show(error.Message, "Ошибка");
             }
         }
 

@@ -32,6 +32,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.link = new System.Windows.Forms.ToolStripStatusLabel();
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.message = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.SuspendLayout();
@@ -39,6 +40,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.message,
             this.link});
             this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
@@ -49,8 +51,8 @@
             // link
             // 
             this.link.Name = "link";
-            this.link.Size = new System.Drawing.Size(16, 17);
-            this.link.Text = "...";
+            this.link.Size = new System.Drawing.Size(47, 17);
+            this.link.Text = "https://";
             // 
             // webView2
             // 
@@ -66,6 +68,13 @@
             this.webView2.ZoomFactor = 1D;
             this.webView2.CoreWebView2InitializationCompleted += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs>(this.webView21_CoreWebView2InitializationCompleted);
             this.webView2.NavigationCompleted += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs>(this.webView2_NavigationCompleted);
+            this.webView2.ContentLoading += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2ContentLoadingEventArgs>(this.webView2_ContentLoading);
+            // 
+            // message
+            // 
+            this.message.Name = "message";
+            this.message.Size = new System.Drawing.Size(163, 17);
+            this.message.Text = "Идет загрузка, подождите... |";
             // 
             // FormBrowser
             // 
@@ -93,5 +102,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel link;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
+        private System.Windows.Forms.ToolStripStatusLabel message;
     }
 }
