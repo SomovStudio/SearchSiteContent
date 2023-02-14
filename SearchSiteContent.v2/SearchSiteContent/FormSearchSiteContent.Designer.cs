@@ -266,6 +266,7 @@
             this.сохранитьРезультатПоискаToolStripMenuItem.Name = "сохранитьРезультатПоискаToolStripMenuItem";
             this.сохранитьРезультатПоискаToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
             this.сохранитьРезультатПоискаToolStripMenuItem.Text = "Сохранить отчет";
+            this.сохранитьРезультатПоискаToolStripMenuItem.Click += new System.EventHandler(this.сохранитьРезультатПоискаToolStripMenuItem_Click);
             // 
             // сохранитьЛогКонсолиToolStripMenuItem
             // 
@@ -283,6 +284,7 @@
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem";
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения были найдены";
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Click += new System.EventHandler(this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem_Click);
             // 
             // списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem
             // 
@@ -290,6 +292,7 @@
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem";
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения не были найдены";
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Click += new System.EventHandler(this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 

@@ -600,5 +600,53 @@ namespace SearchSiteContent
                 MessageBox.Show(ex.Message, "Ошибка");
             }
         }
+
+        private void сохранитьРезультатПоискаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBoxValueFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBoxValueNotFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
     }
 }

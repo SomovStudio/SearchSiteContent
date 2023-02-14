@@ -115,23 +115,22 @@ namespace SearchSiteContent
                     }
                 }
 
+                linkIndex++;
+                if ((Parent.textBoxLinks.Lines.Length - 1) < linkIndex)
+                {
+                    Parent.addReport("Поиск завершен");
+                    this.Close();
+                }
+                else
+                {
+                    message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Идет загрузка, подождите... |";
+                    link.Text = Parent.textBoxLinks.Lines[linkIndex];
+                    webView2.CoreWebView2.Navigate(Parent.textBoxLinks.Lines[linkIndex]);
+                }
             }
             catch (Exception ex)
             {
-                Parent.addReport("Ошибка: " + ex.Message + " | Страница: " + webView2.Source.ToString());
-            }
-
-            linkIndex++;
-            if ((Parent.textBoxLinks.Lines.Length - 1) < linkIndex)
-            {
-                Parent.addReport("Поиск завершен");
-                this.Close();
-            }
-            else
-            {
-                message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Идет загрузка, подождите... |";
-                link.Text = Parent.textBoxLinks.Lines[linkIndex];
-                webView2.CoreWebView2.Navigate(Parent.textBoxLinks.Lines[linkIndex]);
+                Parent.addReport("Ошибка: " + ex.Message + " | Страница: " + link.Text);
             }
         }
 
