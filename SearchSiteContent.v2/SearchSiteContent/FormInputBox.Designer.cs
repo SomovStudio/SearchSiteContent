@@ -84,6 +84,7 @@
             this.Name = "FormInputBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Введите значение";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormInputBox_FormClosing);
             this.Load += new System.EventHandler(this.FormInputBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

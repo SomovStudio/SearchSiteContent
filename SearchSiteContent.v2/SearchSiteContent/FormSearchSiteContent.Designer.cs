@@ -355,7 +355,7 @@
             // 
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -509,6 +509,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.splitContainer2);
             this.tabPage1.ImageIndex = 4;
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
@@ -517,7 +518,6 @@
             this.tabPage1.Size = new System.Drawing.Size(976, 340);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Поиск контента на страницах сайта";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -1193,6 +1193,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.textBoxUserAgent);
             this.tabPage2.Controls.Add(this.checkBoxUserAgent);
             this.tabPage2.ImageIndex = 0;
@@ -1202,7 +1203,6 @@
             this.tabPage2.Size = new System.Drawing.Size(976, 340);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBoxUserAgent
             // 
@@ -1255,6 +1255,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.ImageIndex = 3;
@@ -1264,7 +1265,6 @@
             this.tabPage3.Size = new System.Drawing.Size(976, 192);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Полный отчет";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -1369,6 +1369,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage4.Controls.Add(this.panel13);
             this.tabPage4.Controls.Add(this.panel11);
             this.tabPage4.ImageIndex = 1;
@@ -1378,7 +1379,6 @@
             this.tabPage4.Size = new System.Drawing.Size(976, 192);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Значение найдено";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel13
             // 
@@ -1477,6 +1477,7 @@
             // 
             // panel12
             // 
+            this.panel12.BackColor = System.Drawing.SystemColors.Control;
             this.panel12.Controls.Add(this.label15);
             this.panel12.Controls.Add(this.label16);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1601,9 +1602,6 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem запуститьПродвинутыйПоискToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
@@ -1627,7 +1625,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxLinks;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -1645,9 +1642,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ListBox listBoxValues;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.RichTextBox richTextBoxReport;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1686,20 +1681,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ListBox listBoxValuesXPath;
-        private System.Windows.Forms.ListBox listBoxValuesCSS;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.RichTextBox richTextBoxValueFound;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBoxUserAgent;
-        private System.Windows.Forms.CheckBox checkBoxUserAgent;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxFind;
         private System.Windows.Forms.ToolStripButton toolStripButton12;
@@ -1715,6 +1704,18 @@
         private System.Windows.Forms.ToolStripMenuItem listnthchild4ToolStripMenuItem;
         private System.Windows.Forms.Panel panelMessageLoadLinks;
         private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.ListBox listBoxValues;
+        public System.Windows.Forms.ListBox listBoxValuesXPath;
+        public System.Windows.Forms.ListBox listBoxValuesCSS;
+        public System.Windows.Forms.TextBox textBoxLinks;
+        public System.Windows.Forms.TextBox textBoxUserAgent;
+        public System.Windows.Forms.CheckBox checkBoxUserAgent;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        public System.Windows.Forms.RichTextBox richTextBoxReport;
+        public System.Windows.Forms.RichTextBox richTextBoxValueFound;
+        public System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
     }
 }
 

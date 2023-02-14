@@ -32,5 +32,13 @@ namespace SearchSiteContent
                 Close();
             }
         }
+
+        private void FormInputBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Parent != null)
+            {
+                Parent.toolStripTextBoxPath.Text = "";
+            }
+        }
     }
 }

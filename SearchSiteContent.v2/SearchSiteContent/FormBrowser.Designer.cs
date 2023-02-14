@@ -78,6 +78,7 @@
             this.Name = "FormBrowser";
             this.Text = "Браузер";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormBrowser_FormClosed);
             this.Load += new System.EventHandler(this.FormBrowser_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
