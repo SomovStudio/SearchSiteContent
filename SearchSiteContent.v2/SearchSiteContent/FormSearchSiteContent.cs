@@ -335,7 +335,7 @@ namespace SearchSiteContent
 
                     try
                     {
-                        addReport("Страниц: " + target);
+                        addReport("Страница: " + target);
                         found = false;
                         notfound = false;
 
@@ -372,6 +372,7 @@ namespace SearchSiteContent
                     }
                 }
                 toolStripStatusLabel4.Text = "100%";
+                addReport("Поиск завершен");
                 MessageBox.Show("Поиск завершен!", "Сообщение");
             }
             catch (Exception error)
@@ -706,6 +707,16 @@ namespace SearchSiteContent
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void openListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void saveListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

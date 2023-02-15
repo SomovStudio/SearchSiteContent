@@ -82,7 +82,7 @@ namespace SearchSiteContent
                 message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Загрузка завершена |";
                 link.Text = webView2.Source.ToString();
 
-                Parent.addReport("Страниц: " + link.Text);
+                Parent.addReport("Страница: " + link.Text);
                 found = false;
                 notfound = false;
 

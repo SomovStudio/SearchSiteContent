@@ -164,6 +164,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openListValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveListValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -205,6 +208,7 @@
             this.tabPage5.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -667,6 +671,7 @@
             // 
             this.listBoxValues.BackColor = System.Drawing.Color.White;
             this.listBoxValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValues.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValues.FormattingEnabled = true;
@@ -783,6 +788,7 @@
             // 
             this.listBoxValuesXPath.BackColor = System.Drawing.Color.White;
             this.listBoxValuesXPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesXPath.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValuesXPath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesXPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValuesXPath.FormattingEnabled = true;
@@ -985,6 +991,7 @@
             // 
             this.listBoxValuesCSS.BackColor = System.Drawing.Color.White;
             this.listBoxValuesCSS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesCSS.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValuesCSS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesCSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValuesCSS.FormattingEnabled = true;
@@ -1535,6 +1542,30 @@
             this.toolStripButton14.Text = "О программе SearchSiteContent";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openListValuesToolStripMenuItem,
+            this.saveListValuesToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 70);
+            // 
+            // openListValuesToolStripMenuItem
+            // 
+            this.openListValuesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openListValuesToolStripMenuItem.Image")));
+            this.openListValuesToolStripMenuItem.Name = "openListValuesToolStripMenuItem";
+            this.openListValuesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.openListValuesToolStripMenuItem.Text = "Открыть список значений";
+            this.openListValuesToolStripMenuItem.Click += new System.EventHandler(this.openListValuesToolStripMenuItem_Click);
+            // 
+            // saveListValuesToolStripMenuItem
+            // 
+            this.saveListValuesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveListValuesToolStripMenuItem.Image")));
+            this.saveListValuesToolStripMenuItem.Name = "saveListValuesToolStripMenuItem";
+            this.saveListValuesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.saveListValuesToolStripMenuItem.Text = "Сохранить список значений";
+            this.saveListValuesToolStripMenuItem.Click += new System.EventHandler(this.saveListValuesToolStripMenuItem_Click);
+            // 
             // FormSearchSiteContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1602,6 +1633,7 @@
             this.tabPage5.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1743,6 +1775,9 @@
         public System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton toolStripButton14;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openListValuesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveListValuesToolStripMenuItem;
     }
 }
 
