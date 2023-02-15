@@ -26,6 +26,8 @@ namespace SearchSiteContent
         private int totalPages = 0;
         private int onePercent = 0;
         private int percent = 0;
+        private bool found = false;
+        private bool notfound = false;
 
         public FormBrowser()
         {
@@ -81,6 +83,8 @@ namespace SearchSiteContent
                 link.Text = webView2.Source.ToString();
 
                 Parent.addReport("Страниц: " + link.Text);
+                found = false;
+                notfound = false;
 
                 if (Parent.listBoxValuesXPath.Items.Count > 0)
                 {
@@ -89,11 +93,13 @@ namespace SearchSiteContent
                         if (xpath == "") continue;
                         if (await SearchContentAsync(FormBrowser.BY_XPATH, xpath) == true)
                         {
+                            found = true;
                             Parent.addReport("+ Найдено значение: " + xpath);
                             Parent.addValueFound("Значение [" + xpath + "]: " + link.Text + " - найдено");
                         }
                         else
                         {
+                            notfound = true;
                             Parent.addReport("- Не найдено значение: " + xpath);
                             Parent.addValueNotFound("Значение [" + xpath + "]: " + link.Text + " - не найдено");
                         }
@@ -107,11 +113,13 @@ namespace SearchSiteContent
                         if (css == "") continue;
                         if (await SearchContentAsync(FormBrowser.BY_CSS, css) == true)
                         {
+                            found = true;
                             Parent.addReport("+ Найдено значение: " + css);
                             Parent.addValueFound("Значение [" + css + "]: " + link.Text + " - найдено");
                         }
                         else
                         {
+                            notfound = true;
                             Parent.addReport("- Не найдено значение: " + css);
                             Parent.addValueNotFound("Значение [" + css + "]: " + link.Text + " - не найдено");
                         }
@@ -119,6 +127,8 @@ namespace SearchSiteContent
                 }
 
                 Parent.addReport("========================================");
+                if (found == true) Parent.addValueFound("");
+                if (notfound == true) Parent.addValueNotFound("");
 
                 linkIndex++;
                 if ((Parent.textBoxLinks.Lines.Length - 1) < linkIndex)
@@ -136,6 +146,7 @@ namespace SearchSiteContent
             catch (Exception ex)
             {
                 Parent.addReport("Ошибка: " + ex.Message + " | Страница: " + link.Text);
+                Parent.addReport("========================================");
             }
         }
 

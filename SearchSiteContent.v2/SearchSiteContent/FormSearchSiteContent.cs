@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SearchSiteContent
 {
@@ -265,16 +266,16 @@ namespace SearchSiteContent
 
         public void addValueFound(string message)
         {
-            //richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
-            richTextBoxValueFound.AppendText(message + Environment.NewLine);
-            richTextBoxValueFound.ScrollToCaret();
+            richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
+            //richTextBoxValueFound.AppendText(message + Environment.NewLine);
+            //richTextBoxValueFound.ScrollToCaret();
         }
 
         public void addValueNotFound(string message)
         {
-            //richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
-            richTextBoxValueNotFound.AppendText(message + Environment.NewLine);
-            richTextBoxValueNotFound.ScrollToCaret();
+            richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
+            //richTextBoxValueNotFound.AppendText(message + Environment.NewLine);
+            //richTextBoxValueNotFound.ScrollToCaret();
         }
 
         public void writeFile(string content, string filename)
@@ -320,6 +321,9 @@ namespace SearchSiteContent
                 toolStripProgressBar1.Maximum = totalPages;
                 int percent = 0;
 
+                bool found = false;
+                bool notfound = false;
+
                 foreach (string target in textBoxLinks.Lines)
                 {
                     index++;
@@ -331,6 +335,10 @@ namespace SearchSiteContent
 
                     try
                     {
+                        addReport("Страниц: " + target);
+                        found = false;
+                        notfound = false;
+
                         string pagetarget = getPageHtmlDOM(target);
 
                         if (listBoxValues.Items.Count > 0)
@@ -340,20 +348,27 @@ namespace SearchSiteContent
                                 if (searchValue == "") continue;
                                 if (searchContentOnPage(pagetarget, searchValue) == true)
                                 {
-                                    addReport("Найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    found = true;
+                                    addReport("+ Найдено значение: " + searchValue);
                                     addValueFound("Значение [" + searchValue + "]: " + target + " - найдено");
                                 }
                                 else
                                 {
-                                    addReport("Не найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    notfound = true;
+                                    addReport("- Не найдено значение: " + searchValue);
                                     addValueNotFound("Значение [" + searchValue + "]: " + target + " - не найдено");
                                 }
                             }
                         }
+
+                        addReport("========================================");
+                        if (found == true) addValueFound("");
+                        if (notfound == true) addValueNotFound("");
                     }
                     catch (Exception ex)
                     {
                         addReport("Ошибка \"" + ex.Message + "\" | Страница: " + target);
+                        addReport("========================================");
                     }
                 }
                 toolStripStatusLabel4.Text = "100%";
@@ -680,6 +695,17 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+        }
+
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
