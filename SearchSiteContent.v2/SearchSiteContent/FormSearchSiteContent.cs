@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -257,17 +258,45 @@ namespace SearchSiteContent
 
         public void addReport(string message)
         {
-            richTextBoxReport.Text = message + Environment.NewLine + richTextBoxReport.Text;
+            //richTextBoxReport.Text = message + Environment.NewLine + richTextBoxReport.Text;
+            richTextBoxReport.AppendText(message + Environment.NewLine);
+            richTextBoxReport.ScrollToCaret();
         }
 
         public void addValueFound(string message)
         {
-            richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
+            //richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
+            richTextBoxValueFound.AppendText(message + Environment.NewLine);
+            richTextBoxValueFound.ScrollToCaret();
         }
 
         public void addValueNotFound(string message)
         {
-            richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
+            //richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
+            richTextBoxValueNotFound.AppendText(message + Environment.NewLine);
+            richTextBoxValueNotFound.ScrollToCaret();
+        }
+
+        public void writeFile(string content, string filename)
+        {
+            try
+            {
+                StreamWriter writer;
+                // DEFAULT
+                //writer = new StreamWriter(filename, false, Encoding.Default);
+                //UTF8
+                writer = new StreamWriter(filename, false, new UTF8Encoding(false));
+                //UTF8 BOM
+                //writer = new StreamWriter(filename, false, new UTF8Encoding(true));
+                // WINDOWS 1251
+                //writer = new StreamWriter(filename, false, Encoding.GetEncoding("Windows-1251"));
+                writer.Write(content);
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
 
         private void runFastSearch()
@@ -592,7 +621,8 @@ namespace SearchSiteContent
                 saveFileDialog1.FileName = "";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    //richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxReport.Text, saveFileDialog1.FileName);
                 }
             }
             catch (Exception ex)
@@ -608,7 +638,8 @@ namespace SearchSiteContent
                 saveFileDialog1.FileName = "";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    //richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxReport.Text, saveFileDialog1.FileName);
                 }
             }
             catch (Exception ex)
@@ -624,7 +655,8 @@ namespace SearchSiteContent
                 saveFileDialog1.FileName = "";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBoxValueFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    //richTextBoxValueFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxValueFound.Text, saveFileDialog1.FileName);
                 }
             }
             catch (Exception ex)
@@ -640,7 +672,8 @@ namespace SearchSiteContent
                 saveFileDialog1.FileName = "";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBoxValueNotFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    //richTextBoxValueNotFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxValueNotFound.Text, saveFileDialog1.FileName);
                 }
             }
             catch (Exception ex)

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -79,6 +80,8 @@ namespace SearchSiteContent
                 message.Text = "[" + (linkIndex + 1).ToString() + "/" + Parent.textBoxLinks.Lines.Length.ToString() + "] Загрузка завершена |";
                 link.Text = webView2.Source.ToString();
 
+                Parent.addReport("Страниц: " + link.Text);
+
                 if (Parent.listBoxValuesXPath.Items.Count > 0)
                 {
                     foreach(string xpath in Parent.listBoxValuesXPath.Items)
@@ -86,12 +89,12 @@ namespace SearchSiteContent
                         if (xpath == "") continue;
                         if (await SearchContentAsync(FormBrowser.BY_XPATH, xpath) == true)
                         {
-                            Parent.addReport("Найдено значение [" + xpath + "] на странице [" + link.Text + "]");
+                            Parent.addReport("+ Найдено значение: " + xpath);
                             Parent.addValueFound("Значение [" + xpath + "]: " + link.Text + " - найдено");
                         }
                         else
                         {
-                            Parent.addReport("Не найдено значение [" + xpath + "] на странице [" + link.Text + "]");
+                            Parent.addReport("- Не найдено значение: " + xpath);
                             Parent.addValueNotFound("Значение [" + xpath + "]: " + link.Text + " - не найдено");
                         }
                     }
@@ -104,16 +107,18 @@ namespace SearchSiteContent
                         if (css == "") continue;
                         if (await SearchContentAsync(FormBrowser.BY_CSS, css) == true)
                         {
-                            Parent.addReport("Найдено значение [" + css + "] на странице [" + link.Text + "]");
+                            Parent.addReport("+ Найдено значение: " + css);
                             Parent.addValueFound("Значение [" + css + "]: " + link.Text + " - найдено");
                         }
                         else
                         {
-                            Parent.addReport("Не найдено значение [" + css + "] на странице [" + link.Text + "]");
+                            Parent.addReport("- Не найдено значение: " + css);
                             Parent.addValueNotFound("Значение [" + css + "]: " + link.Text + " - не найдено");
                         }
                     }
                 }
+
+                Parent.addReport("========================================");
 
                 linkIndex++;
                 if ((Parent.textBoxLinks.Lines.Length - 1) < linkIndex)
