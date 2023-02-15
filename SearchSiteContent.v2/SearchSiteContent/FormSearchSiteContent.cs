@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -12,11 +13,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SearchSiteContent
 {
     public partial class FormSearchSiteContent : Form
     {
+        public FormBrowser Browser;
         private Thread thread;
 
         public FormSearchSiteContent()
@@ -37,6 +40,7 @@ namespace SearchSiteContent
             openFileDialog1.FileName = "";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                textBoxLinks.Clear();
                 toolStripTextBoxPath.Text = openFileDialog1.FileName;
                 thread = new Thread(loadSitemap);
                 thread.Start();
@@ -52,7 +56,6 @@ namespace SearchSiteContent
                 return;
             }
 
-            // https://somovstudio.github.io/sitemap.xml
             FormInputBox inputBox = new FormInputBox();
             inputBox.FormClosed += InputBox_FormClosed;
             inputBox.Parent = this;
@@ -187,9 +190,17 @@ namespace SearchSiteContent
 
         private void stop()
         {
+            if (Browser != null)
+            {
+                Browser.Close();
+                Browser = null;
+                MessageBox.Show("Процесс прерван пользователем!", "Сообщение");
+                return;
+            }
+            
             if (thread.ThreadState.ToString() == "Unstarted")
             {
-                MessageBox.Show("Процесс поиска еще не запущен");
+                MessageBox.Show("Процесс еще не запущен", "Сообщение");
                 return;
             }
 
@@ -201,14 +212,14 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(error.Message, "Ошибка");
             }
-            MessageBox.Show("Процесс прерван пользователем!");
+            MessageBox.Show("Процесс прерван пользователем!", "Сообщение");
         }
 
         private void startFastSearch()
         {
-            if (thread.ThreadState.ToString() == "Running")
+            if (thread.ThreadState.ToString() == "Running" || Browser != null)
             {
-                MessageBox.Show("Процесс поиска уже запущен");
+                MessageBox.Show("Процесс поиска уже запущен", "Сообщение");
                 return;
             }
 
@@ -223,24 +234,70 @@ namespace SearchSiteContent
             thread.Start();
         }
 
+        private void startSmartSearch()
+        {
+            if (thread.ThreadState.ToString() == "Running" || Browser != null)
+            {
+                MessageBox.Show("Процесс поиска уже запущен", "Сообщение");
+                return;
+            }
+
+            richTextBoxReport.Clear();
+            richTextBoxValueFound.Clear();
+            richTextBoxValueNotFound.Clear();
+            toolStripProgressBar1.Maximum = 0;
+            toolStripProgressBar1.Value = 0;
+            toolStripStatusLabel3.Text = "...";
+            toolStripStatusLabel4.Text = "0%";
+            runSmartSearchAsync();
+        }
+
         private bool searchContentOnPage(string page, string value)
         {
             return page.Contains(value);
         }
 
-        private void addReport(string message)
+        public void addReport(string message)
         {
-            richTextBoxReport.Text = message + Environment.NewLine + richTextBoxReport.Text;
+            //richTextBoxReport.Text = message + Environment.NewLine + richTextBoxReport.Text;
+            richTextBoxReport.AppendText(message + Environment.NewLine);
+            richTextBoxReport.ScrollToCaret();
         }
 
-        private void addValueFound(string message)
+        public void addValueFound(string message)
         {
             richTextBoxValueFound.Text = richTextBoxValueFound.Text + message + Environment.NewLine;
+            //richTextBoxValueFound.AppendText(message + Environment.NewLine);
+            //richTextBoxValueFound.ScrollToCaret();
         }
 
-        private void addValueNotFound(string message)
+        public void addValueNotFound(string message)
         {
             richTextBoxValueNotFound.Text = richTextBoxValueNotFound.Text + message + Environment.NewLine;
+            //richTextBoxValueNotFound.AppendText(message + Environment.NewLine);
+            //richTextBoxValueNotFound.ScrollToCaret();
+        }
+
+        public void writeFile(string content, string filename)
+        {
+            try
+            {
+                StreamWriter writer;
+                // DEFAULT
+                //writer = new StreamWriter(filename, false, Encoding.Default);
+                //UTF8
+                writer = new StreamWriter(filename, false, new UTF8Encoding(false));
+                //UTF8 BOM
+                //writer = new StreamWriter(filename, false, new UTF8Encoding(true));
+                // WINDOWS 1251
+                //writer = new StreamWriter(filename, false, Encoding.GetEncoding("Windows-1251"));
+                writer.Write(content);
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
 
         private void runFastSearch()
@@ -264,6 +321,9 @@ namespace SearchSiteContent
                 toolStripProgressBar1.Maximum = totalPages;
                 int percent = 0;
 
+                bool found = false;
+                bool notfound = false;
+
                 foreach (string target in textBoxLinks.Lines)
                 {
                     index++;
@@ -275,6 +335,10 @@ namespace SearchSiteContent
 
                     try
                     {
+                        addReport("Страница: " + target);
+                        found = false;
+                        notfound = false;
+
                         string pagetarget = getPageHtmlDOM(target);
 
                         if (listBoxValues.Items.Count > 0)
@@ -284,23 +348,31 @@ namespace SearchSiteContent
                                 if (searchValue == "") continue;
                                 if (searchContentOnPage(pagetarget, searchValue) == true)
                                 {
-                                    addReport("Найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    found = true;
+                                    addReport("+ Найдено значение: " + searchValue);
                                     addValueFound("Значение [" + searchValue + "]: " + target + " - найдено");
                                 }
                                 else
                                 {
-                                    addReport("Не найдено значение [" + searchValue + "] на странице [" + target + "]");
+                                    notfound = true;
+                                    addReport("- Не найдено значение: " + searchValue);
                                     addValueNotFound("Значение [" + searchValue + "]: " + target + " - не найдено");
                                 }
                             }
                         }
+
+                        addReport("========================================");
+                        if (found == true) addValueFound("");
+                        if (notfound == true) addValueNotFound("");
                     }
                     catch (Exception ex)
                     {
                         addReport("Ошибка \"" + ex.Message + "\" | Страница: " + target);
+                        addReport("========================================");
                     }
                 }
                 toolStripStatusLabel4.Text = "100%";
+                addReport("Поиск завершен");
                 MessageBox.Show("Поиск завершен!", "Сообщение");
             }
             catch (Exception error)
@@ -314,13 +386,71 @@ namespace SearchSiteContent
             thread.Abort();
         }
 
+        private void runSmartSearchAsync()
+        {
+            Browser = new FormBrowser();
+            Browser.Parent = this;
+            Browser.Show();
+            Browser.StartSearch();
+        }
+
+        /* Поиск по тексту */
+        int _findIndex = 0;
+        int _findLast = 0;
+        String _findText = "";
+        private void findText(RichTextBox _richTextBox, ToolStripComboBox _cbox)
+        {
+            try
+            {
+                bool resolution = true;
+                for (int k = 0; k < _cbox.Items.Count; k++)
+                    if (_cbox.Items[k].ToString() == _cbox.Text) resolution = false;
+                if (resolution) _cbox.Items.Add(_cbox.Text);
+                if (_findText != _cbox.Text)
+                {
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+                if (_richTextBox.Find(_cbox.Text, _findIndex, _richTextBox.TextLength - 1, RichTextBoxFinds.None) >= 0)
+                {
+                    _richTextBox.Select();
+                    _findIndex = _richTextBox.SelectionStart + _richTextBox.SelectionLength;
+                    if (_findLast == _richTextBox.SelectionStart)
+                    {
+                        MessageBox.Show("Поиск в списке результатов - завершен", "Сообщение");
+                        _findIndex = 0;
+                        _findLast = 0;
+                        _findText = _cbox.Text;
+                    }
+                    else
+                    {
+                        _findLast = _richTextBox.SelectionStart;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поиск в списке результатов - завершен", "Сообщение");
+                    _findIndex = 0;
+                    _findLast = 0;
+                    _findText = _cbox.Text;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+
         /*
          * == Events ============================================
          */
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Browser = null;
         }
 
         private void checkBoxUserAgent_CheckedChanged(object sender, EventArgs e)
@@ -455,6 +585,11 @@ namespace SearchSiteContent
             stop();
         }
 
+        private void остановитьПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stop();
+        }
+
         private void richTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             try
@@ -463,8 +598,125 @@ namespace SearchSiteContent
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show(error.Message, "Ошибка");
             }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            startSmartSearch();
+        }
+
+        private void запуститьПродвинутыйПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startSmartSearch();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
+        }
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                findText(richTextBoxReport, toolStripComboBoxFind);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    //richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxReport.Text, saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void сохранитьРезультатПоискаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    //richTextBoxReport.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxReport.Text, saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    //richTextBoxValueFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxValueFound.Text, saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.FileName = "";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    //richTextBoxValueNotFound.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    writeFile(richTextBoxValueNotFound.Text, saveFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            FormAbout about = new FormAbout();
+            about.ShowDialog();
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void openListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void saveListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

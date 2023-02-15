@@ -26,10 +26,14 @@ namespace SearchSiteContent
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(Parent != null)
+            Close();
+        }
+
+        private void FormInputBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Parent != null)
             {
                 Parent.toolStripTextBoxPath.Text = textBox1.Text;
-                Close();
             }
         }
     }

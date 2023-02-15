@@ -57,9 +57,9 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
@@ -69,6 +69,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panelMessageLoadLinks = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.textBoxLinks = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -124,6 +126,11 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aididsufixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aididpatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listLinthoftype4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listLinthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listnthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -155,13 +162,11 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.aididsufixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aididpatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listLinthoftype4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listLinthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listnthchild4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelMessageLoadLinks = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openListValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveListValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -176,6 +181,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panelMessageLoadLinks.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -202,7 +208,7 @@
             this.tabPage5.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panelMessageLoadLinks.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -266,6 +272,7 @@
             this.сохранитьРезультатПоискаToolStripMenuItem.Name = "сохранитьРезультатПоискаToolStripMenuItem";
             this.сохранитьРезультатПоискаToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
             this.сохранитьРезультатПоискаToolStripMenuItem.Text = "Сохранить отчет";
+            this.сохранитьРезультатПоискаToolStripMenuItem.Click += new System.EventHandler(this.сохранитьРезультатПоискаToolStripMenuItem_Click);
             // 
             // сохранитьЛогКонсолиToolStripMenuItem
             // 
@@ -283,6 +290,7 @@
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem";
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
             this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения были найдены";
+            this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem.Click += new System.EventHandler(this.списокСтраницНаКоторыхЗначенияБылиНайденыToolStripMenuItem_Click);
             // 
             // списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem
             // 
@@ -290,6 +298,7 @@
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Name = "списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem";
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Size = new System.Drawing.Size(383, 22);
             this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Text = "Список страниц на которых значения не были найдены";
+            this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem.Click += new System.EventHandler(this.списокСтраницНаКоторыхЗначенияНеБылиНайденыToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -302,6 +311,7 @@
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
             this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(273, 22);
             this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
             // действияToolStripMenuItem
             // 
@@ -328,6 +338,7 @@
             this.остановитьПоискToolStripMenuItem.Name = "остановитьПоискToolStripMenuItem";
             this.остановитьПоискToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.остановитьПоискToolStripMenuItem.Text = "Остановить поиск";
+            this.остановитьПоискToolStripMenuItem.Click += new System.EventHandler(this.остановитьПоискToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -340,6 +351,7 @@
             this.запуститьПродвинутыйПоискToolStripMenuItem.Name = "запуститьПродвинутыйПоискToolStripMenuItem";
             this.запуститьПродвинутыйПоискToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.запуститьПродвинутыйПоискToolStripMenuItem.Text = "Запустить продвинутый поиск";
+            this.запуститьПродвинутыйПоискToolStripMenuItem.Click += new System.EventHandler(this.запуститьПродвинутыйПоискToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
@@ -353,8 +365,9 @@
             // 
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе...";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе SearchSiteContent";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -365,9 +378,11 @@
             this.toolStripButton2,
             this.toolStripSeparator1,
             this.toolStripButton3,
-            this.toolStripButton4,
+            this.toolStripButton5,
             this.toolStripSeparator2,
-            this.toolStripButton5});
+            this.toolStripButton4,
+            this.toolStripSeparator10,
+            this.toolStripButton14});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 25);
@@ -422,20 +437,6 @@
             this.toolStripButton3.Text = "Быстрый поиск";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(127, 22);
-            this.toolStripButton4.Text = "Остановить поиск";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // toolStripButton5
             // 
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
@@ -443,6 +444,21 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(139, 22);
             this.toolStripButton5.Text = "Продвинутый поиск";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(91, 22);
+            this.toolStripButton4.Text = "Остановить";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // statusStrip1
             // 
@@ -505,6 +521,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Controls.Add(this.splitContainer2);
             this.tabPage1.ImageIndex = 4;
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
@@ -513,7 +530,6 @@
             this.tabPage1.Size = new System.Drawing.Size(976, 340);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Поиск контента на страницах сайта";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -544,6 +560,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(621, 313);
             this.panel3.TabIndex = 6;
+            // 
+            // panelMessageLoadLinks
+            // 
+            this.panelMessageLoadLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMessageLoadLinks.BackColor = System.Drawing.SystemColors.Control;
+            this.panelMessageLoadLinks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMessageLoadLinks.Controls.Add(this.label17);
+            this.panelMessageLoadLinks.Location = new System.Drawing.Point(398, 7);
+            this.panelMessageLoadLinks.Name = "panelMessageLoadLinks";
+            this.panelMessageLoadLinks.Size = new System.Drawing.Size(200, 86);
+            this.panelMessageLoadLinks.TabIndex = 6;
+            this.panelMessageLoadLinks.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(3, 11);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(192, 55);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Идет загрузка ссылока, подождите пожалуйста...";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxLinks
             // 
@@ -633,6 +671,7 @@
             // 
             this.listBoxValues.BackColor = System.Drawing.Color.White;
             this.listBoxValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValues.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValues.FormattingEnabled = true;
@@ -749,6 +788,7 @@
             // 
             this.listBoxValuesXPath.BackColor = System.Drawing.Color.White;
             this.listBoxValuesXPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesXPath.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValuesXPath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesXPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValuesXPath.FormattingEnabled = true;
@@ -951,6 +991,7 @@
             // 
             this.listBoxValuesCSS.BackColor = System.Drawing.Color.White;
             this.listBoxValuesCSS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxValuesCSS.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxValuesCSS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxValuesCSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxValuesCSS.FormattingEnabled = true;
@@ -1096,6 +1137,41 @@
             this.toolStripMenuItem9.Text = "a[id ^= \'id_prefix_\']";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.addCSSInField);
             // 
+            // aididsufixToolStripMenuItem
+            // 
+            this.aididsufixToolStripMenuItem.Name = "aididsufixToolStripMenuItem";
+            this.aididsufixToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.aididsufixToolStripMenuItem.Text = "a[id $= \'_id_sufix\']";
+            this.aididsufixToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            // 
+            // aididpatternToolStripMenuItem
+            // 
+            this.aididpatternToolStripMenuItem.Name = "aididpatternToolStripMenuItem";
+            this.aididpatternToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.aididpatternToolStripMenuItem.Text = "a[id *= \'id_pattern\']";
+            this.aididpatternToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            // 
+            // listLinthoftype4ToolStripMenuItem
+            // 
+            this.listLinthoftype4ToolStripMenuItem.Name = "listLinthoftype4ToolStripMenuItem";
+            this.listLinthoftype4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.listLinthoftype4ToolStripMenuItem.Text = "#list li:nth-of-type(4)";
+            this.listLinthoftype4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            // 
+            // listLinthchild4ToolStripMenuItem
+            // 
+            this.listLinthchild4ToolStripMenuItem.Name = "listLinthchild4ToolStripMenuItem";
+            this.listLinthchild4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.listLinthchild4ToolStripMenuItem.Text = "#list li:nth-child(4)";
+            this.listLinthchild4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            // 
+            // listnthchild4ToolStripMenuItem
+            // 
+            this.listnthchild4ToolStripMenuItem.Name = "listnthchild4ToolStripMenuItem";
+            this.listnthchild4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.listnthchild4ToolStripMenuItem.Text = "#list *:nth-child(4)";
+            this.listnthchild4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label9);
@@ -1132,6 +1208,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.textBoxUserAgent);
             this.tabPage2.Controls.Add(this.checkBoxUserAgent);
             this.tabPage2.ImageIndex = 0;
@@ -1141,7 +1218,6 @@
             this.tabPage2.Size = new System.Drawing.Size(976, 340);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // textBoxUserAgent
             // 
@@ -1194,6 +1270,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.ImageIndex = 3;
@@ -1203,7 +1280,6 @@
             this.tabPage3.Size = new System.Drawing.Size(976, 192);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Полный отчет";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -1257,6 +1333,7 @@
             this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton12.Text = "Поиск в списке результатов";
             this.toolStripButton12.ToolTipText = "Поиск";
+            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
             // toolStripSeparator9
             // 
@@ -1271,6 +1348,7 @@
             this.toolStripButton13.Name = "toolStripButton13";
             this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton13.Text = "Сохранить отчет";
+            this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
             // 
             // panel1
             // 
@@ -1308,6 +1386,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage4.Controls.Add(this.panel13);
             this.tabPage4.Controls.Add(this.panel11);
             this.tabPage4.ImageIndex = 1;
@@ -1317,7 +1396,6 @@
             this.tabPage4.Size = new System.Drawing.Size(976, 192);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Значение найдено";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel13
             // 
@@ -1416,6 +1494,7 @@
             // 
             // panel12
             // 
+            this.panel12.BackColor = System.Drawing.SystemColors.Control;
             this.panel12.Controls.Add(this.label15);
             this.panel12.Controls.Add(this.label16);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1448,62 +1527,44 @@
             this.label16.Size = new System.Drawing.Size(970, 2);
             this.label16.TabIndex = 1;
             // 
-            // aididsufixToolStripMenuItem
+            // toolStripSeparator10
             // 
-            this.aididsufixToolStripMenuItem.Name = "aididsufixToolStripMenuItem";
-            this.aididsufixToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.aididsufixToolStripMenuItem.Text = "a[id $= \'_id_sufix\']";
-            this.aididsufixToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
-            // aididpatternToolStripMenuItem
+            // toolStripButton14
             // 
-            this.aididpatternToolStripMenuItem.Name = "aididpatternToolStripMenuItem";
-            this.aididpatternToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.aididpatternToolStripMenuItem.Text = "a[id *= \'id_pattern\']";
-            this.aididpatternToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
+            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton14.Text = "О программе SearchSiteContent";
+            this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
-            // listLinthoftype4ToolStripMenuItem
+            // contextMenuStrip1
             // 
-            this.listLinthoftype4ToolStripMenuItem.Name = "listLinthoftype4ToolStripMenuItem";
-            this.listLinthoftype4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.listLinthoftype4ToolStripMenuItem.Text = "#list li:nth-of-type(4)";
-            this.listLinthoftype4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openListValuesToolStripMenuItem,
+            this.saveListValuesToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 70);
             // 
-            // listLinthchild4ToolStripMenuItem
+            // openListValuesToolStripMenuItem
             // 
-            this.listLinthchild4ToolStripMenuItem.Name = "listLinthchild4ToolStripMenuItem";
-            this.listLinthchild4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.listLinthchild4ToolStripMenuItem.Text = "#list li:nth-child(4)";
-            this.listLinthchild4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
+            this.openListValuesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openListValuesToolStripMenuItem.Image")));
+            this.openListValuesToolStripMenuItem.Name = "openListValuesToolStripMenuItem";
+            this.openListValuesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.openListValuesToolStripMenuItem.Text = "Открыть список значений";
+            this.openListValuesToolStripMenuItem.Click += new System.EventHandler(this.openListValuesToolStripMenuItem_Click);
             // 
-            // listnthchild4ToolStripMenuItem
+            // saveListValuesToolStripMenuItem
             // 
-            this.listnthchild4ToolStripMenuItem.Name = "listnthchild4ToolStripMenuItem";
-            this.listnthchild4ToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.listnthchild4ToolStripMenuItem.Text = "#list *:nth-child(4)";
-            this.listnthchild4ToolStripMenuItem.Click += new System.EventHandler(this.addCSSInField);
-            // 
-            // panelMessageLoadLinks
-            // 
-            this.panelMessageLoadLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelMessageLoadLinks.BackColor = System.Drawing.SystemColors.Control;
-            this.panelMessageLoadLinks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMessageLoadLinks.Controls.Add(this.label17);
-            this.panelMessageLoadLinks.Location = new System.Drawing.Point(398, 7);
-            this.panelMessageLoadLinks.Name = "panelMessageLoadLinks";
-            this.panelMessageLoadLinks.Size = new System.Drawing.Size(200, 86);
-            this.panelMessageLoadLinks.TabIndex = 6;
-            this.panelMessageLoadLinks.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(3, 11);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(192, 55);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Идет загрузка ссылока, подождите пожалуйста...";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.saveListValuesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveListValuesToolStripMenuItem.Image")));
+            this.saveListValuesToolStripMenuItem.Name = "saveListValuesToolStripMenuItem";
+            this.saveListValuesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.saveListValuesToolStripMenuItem.Text = "Сохранить список значений";
+            this.saveListValuesToolStripMenuItem.Click += new System.EventHandler(this.saveListValuesToolStripMenuItem_Click);
             // 
             // FormSearchSiteContent
             // 
@@ -1536,6 +1597,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panelMessageLoadLinks.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
@@ -1571,7 +1633,7 @@
             this.tabPage5.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.panelMessageLoadLinks.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1597,9 +1659,6 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripMenuItem запуститьПродвинутыйПоискToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
@@ -1623,7 +1682,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxLinks;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -1641,9 +1699,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ListBox listBoxValues;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.RichTextBox richTextBoxReport;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1682,20 +1738,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ListBox listBoxValuesXPath;
-        private System.Windows.Forms.ListBox listBoxValuesCSS;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.RichTextBox richTextBoxValueFound;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBoxUserAgent;
-        private System.Windows.Forms.CheckBox checkBoxUserAgent;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxFind;
         private System.Windows.Forms.ToolStripButton toolStripButton12;
@@ -1711,6 +1761,23 @@
         private System.Windows.Forms.ToolStripMenuItem listnthchild4ToolStripMenuItem;
         private System.Windows.Forms.Panel panelMessageLoadLinks;
         private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.ListBox listBoxValues;
+        public System.Windows.Forms.ListBox listBoxValuesXPath;
+        public System.Windows.Forms.ListBox listBoxValuesCSS;
+        public System.Windows.Forms.TextBox textBoxLinks;
+        public System.Windows.Forms.TextBox textBoxUserAgent;
+        public System.Windows.Forms.CheckBox checkBoxUserAgent;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        public System.Windows.Forms.RichTextBox richTextBoxReport;
+        public System.Windows.Forms.RichTextBox richTextBoxValueFound;
+        public System.Windows.Forms.RichTextBox richTextBoxValueNotFound;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripButton toolStripButton14;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openListValuesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveListValuesToolStripMenuItem;
     }
 }
 
