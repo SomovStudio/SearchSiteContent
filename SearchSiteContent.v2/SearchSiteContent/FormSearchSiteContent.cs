@@ -156,6 +156,7 @@ namespace SearchSiteContent
             try
             {
                 ArrayList sitemaps = new ArrayList();
+                string urlSitemap = "";
 
                 /* собираю все sitemap */
                 sitemaps.Add(toolStripTextBoxPath.Text);
@@ -165,15 +166,18 @@ namespace SearchSiteContent
                     if (xmlLink.Contains(".xml") == true)
                     {
                         ArrayList listSitemaps = readXML(xmlLink);
-                        foreach (string urlSitemap in listSitemaps)
+                        for (int j = 0; j < listSitemaps.Count; j++)
                         {
+                            urlSitemap = "";
+                            urlSitemap = (string)listSitemaps[j];
                             if (urlSitemap.Contains(".xml") == true)
                             {
                                 sitemaps.Add(urlSitemap);
                             }
                             else
                             {
-                                textBoxLinks.Text += urlSitemap + Environment.NewLine;
+                                textBoxLinks.Text += urlSitemap;
+                                if (j != (listSitemaps.Count - 1)) textBoxLinks.Text += Environment.NewLine;
                                 textBoxLinks.Update();
                             }
                         }
@@ -284,13 +288,13 @@ namespace SearchSiteContent
             {
                 StreamWriter writer;
                 // DEFAULT
-                //writer = new StreamWriter(filename, false, Encoding.Default);
-                //UTF8
+                // writer = new StreamWriter(filename, false, Encoding.Default);
+                // UTF8
                 writer = new StreamWriter(filename, false, new UTF8Encoding(false));
-                //UTF8 BOM
-                //writer = new StreamWriter(filename, false, new UTF8Encoding(true));
+                // UTF8 BOM
+                // writer = new StreamWriter(filename, false, new UTF8Encoding(true));
                 // WINDOWS 1251
-                //writer = new StreamWriter(filename, false, Encoding.GetEncoding("Windows-1251"));
+                // writer = new StreamWriter(filename, false, Encoding.GetEncoding("Windows-1251"));
                 writer.Write(content);
                 writer.Close();
             }
@@ -298,6 +302,30 @@ namespace SearchSiteContent
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+        }
+
+        public string readFile(string filename)
+        {
+            string content = "";
+            try
+            {
+                StreamReader reader;
+                // DEFAULT
+                // reader = new StreamReader(filename, Encoding.Default);
+                // UTF8
+                reader = new StreamReader(filename, new UTF8Encoding(false));
+                // UTF8 BOM
+                // reader = new StreamReader(filename, new UTF8Encoding(true));
+                // WINDOWS 1251
+                // reader = new StreamReader(filename, Encoding.GetEncoding("Windows-1251"));
+                content = reader.ReadToEnd();
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+            return content;
         }
 
         private void runFastSearch()
@@ -443,6 +471,55 @@ namespace SearchSiteContent
             }
         }
 
+        private void loadListValues(ListBox listBox)
+        {
+            try
+            {
+                
+                openFileDialog2.FileName = "";
+                if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                {
+                    listBox.Items.Clear();
+                    string content = readFile(openFileDialog2.FileName);
+                    string[] text = content.Split('\n');
+                    foreach (string line in text)
+                    {
+                        listBox.Items.Add(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void saveListValues(ListBox listBox)
+        {
+            try
+            {
+                int count = listBox.Items.Count;
+                if(count > 0)
+                {
+                    string text = "";
+                    for(int i = 0; i < count; i++)
+                    {
+                        text += listBox.Items[i].ToString();
+                        if (i != (count - 1)) text += Environment.NewLine;
+                    }
+
+                    saveFileDialog1.FileName = "";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        writeFile(text, saveFileDialog1.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
 
         /*
          * == Events ============================================
@@ -709,14 +786,34 @@ namespace SearchSiteContent
             Close();
         }
 
-        private void openListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton15_Click(object sender, EventArgs e)
         {
-            
+            loadListValues(listBoxValues);
         }
 
-        private void saveListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton16_Click(object sender, EventArgs e)
         {
+            saveListValues(listBoxValues);
+        }
 
+        private void toolStripButton17_Click(object sender, EventArgs e)
+        {
+            loadListValues(listBoxValuesXPath);
+        }
+
+        private void toolStripButton18_Click(object sender, EventArgs e)
+        {
+            saveListValues(listBoxValuesXPath);
+        }
+
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+            loadListValues(listBoxValuesCSS);
+        }
+
+        private void toolStripButton20_Click(object sender, EventArgs e)
+        {
+            saveListValues(listBoxValuesCSS);
         }
     }
 }
