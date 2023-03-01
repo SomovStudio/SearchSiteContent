@@ -166,6 +166,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -830,7 +835,9 @@
             this.toolStripButton8,
             this.toolStripButton9,
             this.toolStripSeparator7,
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripButton17,
+            this.toolStripButton18});
             this.toolStripXPath.Location = new System.Drawing.Point(0, 0);
             this.toolStripXPath.Name = "toolStripXPath";
             this.toolStripXPath.Size = new System.Drawing.Size(310, 25);
@@ -1032,7 +1039,9 @@
             this.toolStripButton10,
             this.toolStripButton11,
             this.toolStripSeparator8,
-            this.toolStripDropDownButton2});
+            this.toolStripDropDownButton2,
+            this.toolStripButton19,
+            this.toolStripButton20});
             this.toolStripValueCSS.Location = new System.Drawing.Point(0, 0);
             this.toolStripValueCSS.Name = "toolStripValueCSS";
             this.toolStripValueCSS.Size = new System.Drawing.Size(310, 25);
@@ -1559,6 +1568,50 @@
             this.toolStripButton16.Text = "Сохранить список значений";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.Filter = "*.txt|*.txt";
+            // 
+            // toolStripButton17
+            // 
+            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
+            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton17.Name = "toolStripButton17";
+            this.toolStripButton17.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButton17.Text = "Загрузить список значений";
+            this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
+            // 
+            // toolStripButton18
+            // 
+            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton18.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton18.Image")));
+            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton18.Name = "toolStripButton18";
+            this.toolStripButton18.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButton18.Text = "Сохранить список значений";
+            this.toolStripButton18.Click += new System.EventHandler(this.toolStripButton18_Click);
+            // 
+            // toolStripButton19
+            // 
+            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton19.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton19.Image")));
+            this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton19.Name = "toolStripButton19";
+            this.toolStripButton19.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButton19.Text = "Загрузить список значений";
+            this.toolStripButton19.Click += new System.EventHandler(this.toolStripButton19_Click);
+            // 
+            // toolStripButton20
+            // 
+            this.toolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton20.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton20.Image")));
+            this.toolStripButton20.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton20.Name = "toolStripButton20";
+            this.toolStripButton20.Size = new System.Drawing.Size(23, 20);
+            this.toolStripButton20.Text = "Сохранить список значений";
+            this.toolStripButton20.Click += new System.EventHandler(this.toolStripButton20_Click);
+            // 
             // FormSearchSiteContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1769,6 +1822,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton14;
         private System.Windows.Forms.ToolStripButton toolStripButton15;
         private System.Windows.Forms.ToolStripButton toolStripButton16;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ToolStripButton toolStripButton17;
+        private System.Windows.Forms.ToolStripButton toolStripButton18;
+        private System.Windows.Forms.ToolStripButton toolStripButton19;
+        private System.Windows.Forms.ToolStripButton toolStripButton20;
     }
 }
 
