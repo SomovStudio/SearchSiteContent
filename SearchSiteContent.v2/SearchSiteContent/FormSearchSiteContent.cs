@@ -156,6 +156,7 @@ namespace SearchSiteContent
             try
             {
                 ArrayList sitemaps = new ArrayList();
+                string urlSitemap = "";
 
                 /* собираю все sitemap */
                 sitemaps.Add(toolStripTextBoxPath.Text);
@@ -165,15 +166,18 @@ namespace SearchSiteContent
                     if (xmlLink.Contains(".xml") == true)
                     {
                         ArrayList listSitemaps = readXML(xmlLink);
-                        foreach (string urlSitemap in listSitemaps)
+                        for (int j = 0; j < listSitemaps.Count; j++)
                         {
+                            urlSitemap = "";
+                            urlSitemap = (string)listSitemaps[j];
                             if (urlSitemap.Contains(".xml") == true)
                             {
                                 sitemaps.Add(urlSitemap);
                             }
                             else
                             {
-                                textBoxLinks.Text += urlSitemap + Environment.NewLine;
+                                textBoxLinks.Text += urlSitemap;
+                                if (j != (listSitemaps.Count - 1)) textBoxLinks.Text += Environment.NewLine;
                                 textBoxLinks.Update();
                             }
                         }
@@ -709,12 +713,12 @@ namespace SearchSiteContent
             Close();
         }
 
-        private void openListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton15_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void saveListValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton16_Click(object sender, EventArgs e)
         {
 
         }
