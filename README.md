@@ -7,7 +7,7 @@
 В результате вы получите несколько отчетов, один из которых общий по всему процессу поиска значений 
 и два отдельных отчета по найденым и не найденым значениям на указанных страницах.
 <br>
-Скачать архив: https://github.com/SomovStudio/SearchSiteContent/archive/refs/tags/1.2.zip
+Скачать архив: https://github.com/SomovStudio/SearchSiteContent/archive/refs/tags/v2.0.zip
 <br>
 (последнее обновление 1.03.2023 версия 2.0)
 <hr>
