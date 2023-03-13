@@ -66,6 +66,7 @@ namespace SearchSiteContent
         {
             if (toolStripTextBoxPath.Text != "")
             {
+                textBoxLinks.Clear();
                 thread = new Thread(loadSitemap);
                 thread.Start();
                 panelMessageLoadLinks.Visible = true;
