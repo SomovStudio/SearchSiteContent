@@ -7,9 +7,9 @@
 В результате вы получите несколько отчетов, один из которых общий по всему процессу поиска значений 
 и два отдельных отчета по найденым и не найденым значениям на указанных страницах.
 <br>
-Скачать: https://github.com/SomovStudio/SearchSiteContent/releases/download/2.1/SearchSiteContent-2.1.zip
+Скачать: https://github.com/SomovStudio/SearchSiteContent/releases/download/2.2/SearchSiteContent-2.2.zip
 <br>
-(последнее обновление 14.03.2023 версия 2.1)
+(последнее обновление 6.09.2023 версия 2.2)
 <hr>
 <p align="center">
   <img src="https://github.com/SomovStudio/SearchSiteContent/blob/main/SearchSiteContent.v2/SearchSiteContent/img/screenshot.png">
