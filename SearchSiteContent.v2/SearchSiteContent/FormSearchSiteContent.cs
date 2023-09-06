@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -42,7 +43,8 @@ namespace SearchSiteContent
             {
                 textBoxLinks.Clear();
                 toolStripTextBoxPath.Text = openFileDialog1.FileName;
-                thread = new Thread(loadSitemap);
+                //thread = new Thread(loadSitemap);
+                thread = new Thread(LocalLoadSitemap);
                 thread.Start();
                 panelMessageLoadLinks.Visible = true;
             }
@@ -135,6 +137,49 @@ namespace SearchSiteContent
             return list;
         }
 
+        private ArrayList readLocalXML(string filename)
+        {
+            ArrayList list = new ArrayList();
+
+            try
+            {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                XmlDataDocument xmldoc = new XmlDataDocument();
+                xmldoc.PreserveWhitespace = true;
+                xmldoc.XmlResolver = null;
+                XmlNodeList xmlnode;
+                int i = 0;
+                string str = null;
+                FileStream fs = new FileStream(@filename, FileMode.Open, FileAccess.Read);
+                xmldoc.Load(fs);
+                xmlnode = xmldoc.GetElementsByTagName("url");
+                if (xmlnode.Count <= 0) xmlnode = xmldoc.GetElementsByTagName("sitemap");
+
+                for (i = 0; i <= xmlnode.Count - 1; i++)
+                {
+                    for (int j = 0; j <= xmlnode[i].ChildNodes.Count; j++)
+                    {
+                        if (xmlnode[i].ChildNodes.Item(j).Name == "loc")
+                        {
+                            string link = xmlnode[i].ChildNodes.Item(j).InnerText.Trim();
+                            list.Add(link);
+                            break;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+
+            return list;
+        }
+
         private string getPageHtmlDOM(string url)
         {
 
@@ -187,6 +232,47 @@ namespace SearchSiteContent
                 MessageBox.Show("Загрузка ссылок завершена", "Сообщение");
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+            panelMessageLoadLinks.Visible = false;
+        }
+
+        private void LocalLoadSitemap()
+        {
+            try
+            {
+                ArrayList sitemaps = new ArrayList();
+                string urlSitemap = "";
+
+                /* собираю все sitemap */
+                sitemaps.Add(toolStripTextBoxPath.Text);
+                for (int i = 0; i < sitemaps.Count; i++)
+                {
+                    string xmlLink = sitemaps[i].ToString();
+                    if (xmlLink.Contains(".xml") == true)
+                    {
+                        ArrayList listSitemaps = readLocalXML(xmlLink);
+                        for (int j = 0; j < listSitemaps.Count; j++)
+                        {
+                            urlSitemap = "";
+                            urlSitemap = (string)listSitemaps[j];
+                            if (urlSitemap.Contains(".xml") == true)
+                            {
+                                sitemaps.Add(urlSitemap);
+                            }
+                            else
+                            {
+                                textBoxLinks.Text += urlSitemap;
+                                if (j != (listSitemaps.Count - 1)) textBoxLinks.Text += Environment.NewLine;
+                                textBoxLinks.Update();
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show("Загрузка ссылок завершена", "Сообщение");
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
